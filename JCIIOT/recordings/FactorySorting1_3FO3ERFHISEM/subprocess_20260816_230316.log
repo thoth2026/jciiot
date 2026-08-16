@@ -1,0 +1,30 @@
+command: C:\Users\thoth\anaconda3\envs\jciiot2026\python.exe D:\projects\jciiot\JCIIOT2026\JCIIOT\src\robot_agent\task_subprocess_runner.py --task "For this task, you need to transport a blue, hollow plastic box. Please move it from the starting point \"Pick Station 2\" to the destination \"Place Station 3\". Please follow the Standard Operating Procedure (SOP)." --task-index 0 --timestamp 20260816_230316 --result-json D:\projects\jciiot\JCIIOT2026\JCIIOT\recordings\FactorySorting1_3FO3ERFHISEM\result_20260816_230316.json --app-dir D:\projects\jciiot\JCIIOT2026\JCIIOT --knowledge-enabled true
+
+===== OUTPUT =====
+[robosuite WARNING] No private macro file found! (macros.py:57)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:58)
+[robosuite WARNING] To setup, run: python D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite/scripts/setup_macros.py (macros.py:59)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly (e.g. pip install mink==0.0.5), otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:41)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+inflated A* planning failed, retrying raw grid: A* failed from (654, 244) to (544, 336).
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: low_dim with keys: ['robot0_left_eef_pos', 'robot0_right_eef_quat', 'robot0_right_eef_pos', 'robot0_left_gripper_qpos', 'robot0_left_eef_quat', 'robot0_right_gripper_qpos']
+using obs modality: rgb with keys: ['robot0_robotview_image']
+using obs modality: depth with keys: []
+using obs modality: scan with keys: []
+Created GPT_Backbone model with number of parameters: 396032
+Loaded robomimic checkpoint: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\model_epoch_150.pth
+Evaluation device: cpu
+[GEOM_GRASP] source=input_5 object=line_5_container_h01_near left=[7.349, 4.499, 1.2505] right=[7.349, 4.739, 1.2505] center=[7.059, 4.619, 1.1255] target_z=1.2755
+inflated A* planning failed, retrying raw grid: A* failed from (545, 336) to (364, 98).
+inflated A* planning failed, retrying raw grid: A* failed from (545, 333) to (364, 98).
+transport_attachment_enabled: object=line_5_container_h01_near, joint=line_5_container_h01_near_joint0, relative_xy=[1.0082, 0.0004], world_z=1.273251, held_gripper_joints=12
+turn_to_output_result: success=True, turn_steps=40, target_yaw=-0.007191, final_yaw=-0.007233, final_error=0.000041, xy_drift=0.000000
+
+===== PROCESS EXIT =====
+returncode: 0

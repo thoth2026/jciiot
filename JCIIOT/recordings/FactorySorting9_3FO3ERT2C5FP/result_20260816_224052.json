@@ -1,0 +1,2514 @@
+{
+  "task": "Move the three white-rimmed storage bins from Pick Station 6 to Place Station 1.",
+  "task_index": 4,
+  "env_name": "FactorySorting9_3FO3ERT2C5FP",
+  "status": "OK",
+  "success": true,
+  "trajectory": "D:\\projects\\jciiot\\JCIIOT2026\\JCIIOT\\recordings\\FactorySorting9_3FO3ERT2C5FP\\trajectory_20260816_224052_OK.json",
+  "running_trajectory": "D:\\projects\\jciiot\\JCIIOT2026\\JCIIOT\\recordings\\FactorySorting9_3FO3ERT2C5FP\\trajectory_20260816_224052_RUNNING.json",
+  "result": {
+    "skill_name": "composed",
+    "success": true,
+    "message": "任务要求搬运三个白边储物箱，受限于每次只能携带一个物体的约束，规划为三轮完整的 move→pick_up→move→place_down 流程。Pick Station 6 映射为 input_1，Place Station 1 映射为 aux_output_1，三个物体名称分别为 white_tote_b01_left_center、white_tote_b01_left_front、white_tote_b01_left_back。",
+    "steps": [
+      {
+        "skill": "move",
+        "description": "导航至取货工位 input_1（Pick Station 6）",
+        "success": true,
+        "message": "Moved to: input_1",
+        "payload": {
+          "action": "move",
+          "target": "input_1",
+          "resolved_station": "input_1",
+          "goal_xy": [
+            -13.1,
+            5.01
+          ],
+          "start_base_pose": {
+            "xy": [
+              13.5,
+              0.0
+            ],
+            "yaw": 3.1415927410125732,
+            "robot_base_pos": [
+              13.5,
+              0.0,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              3.1415927410125732
+            ]
+          },
+          "final_base_pose": {
+            "xy": [
+              -13.099994861672092,
+              5.00499869562515
+            ],
+            "yaw": -3.1399662494659424,
+            "robot_base_pos": [
+              -13.099994861672092,
+              5.00499869562515,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              -3.1399662494659424
+            ]
+          },
+          "waypoints": 100,
+          "pre_pick_approach_profile": {},
+          "post_pick_retreat": [],
+          "distance_to_goal": 0.005001307014401881,
+          "reached": true
+        },
+        "inputs": {
+          "target": "input_1",
+          "object_name": "white_tote_b01_left_center"
+        },
+        "preconditions": [
+          "底盘静止于起始位置",
+          "夹爪为空"
+        ],
+        "expected_output": "机器人到达 input_1 停止点",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "pick_up",
+        "description": "在 input_1 抓取第一个白边储物箱",
+        "success": true,
+        "message": "Strict physics site grasp OK: input_1",
+        "payload": {
+          "action": "pick_up",
+          "target": "input_1",
+          "object_name": "white_tote_b01_left_center",
+          "grasp_initial_base_pose": {
+            "xy": [
+              -13.099994861672092,
+              5.00499869562515
+            ],
+            "yaw": -3.1399662494659424,
+            "robot_base_pos": [
+              -13.099994861672092,
+              5.00499869562515,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              -3.1399662494659424
+            ]
+          },
+          "method": "strict_physics_site_grasp",
+          "ok": true,
+          "transport_shortcuts_cleared": {
+            "attached": true,
+            "object_name": "white_tote_b01_left_center"
+          },
+          "fallback": {
+            "ok": true,
+            "object_name": "white_tote_b01_left_center",
+            "source": "input_1",
+            "joint_name": "white_tote_b01_left_center_joint0",
+            "left_site": [
+              -14.839087999999999,
+              4.739705,
+              1.4889781521965826
+            ],
+            "right_site": [
+              -14.509088,
+              4.739705,
+              1.4889781521965826
+            ],
+            "center_site": [
+              -14.674088,
+              4.954705,
+              1.4889781521965826
+            ],
+            "target_z": 1.5889781521965827,
+            "base_nudge": {
+              "enabled": true,
+              "moved": true,
+              "ok": true,
+              "start_xy": [
+                -13.099994861672092,
+                5.00499869562515
+              ],
+              "desired_xy": [
+                -13.62408899194617,
+                4.95592480255512
+              ],
+              "end_xy": [
+                -13.62269157039022,
+                4.956052084914041
+              ],
+              "turn": {
+                "enabled": true,
+                "turned": false,
+                "start_yaw": -3.1399662494659424,
+                "target_yaw": 3.141592653589793
+              }
+            },
+            "visual_grasp": {
+              "ok": true,
+              "method": "vertical_two_gripper_site_approach",
+              "grasp_status_after_close": {
+                "right": true,
+                "left": true
+              },
+              "grasp_status_after_lift": {
+                "right": true,
+                "left": true
+              },
+              "object_lift_delta": 0.30458357484539755,
+              "post_lift_hold_steps": 80,
+              "contact_grasp_ok": true,
+              "strict_grasp_ok": true,
+              "right_target": [
+                -14.374087999999999,
+                5.034705,
+                1.4689781521965826
+              ],
+              "left_target": [
+                -14.374087999999999,
+                4.874705,
+                1.4689781521965826
+              ],
+              "side_approach_vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "right_rot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "left_rot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pre_close_distances": {
+                "right": 0.0004588249905529689,
+                "left": 0.0005913644652748098
+              },
+              "close_distances": {
+                "right": 0.0026526899431258766,
+                "left": 0.0027176980129398213
+              },
+              "pre_close_positions": {
+                "right": [
+                  -14.37436,
+                  5.03466,
+                  1.46935
+                ],
+                "left": [
+                  -14.37446,
+                  4.87473,
+                  1.46944
+                ]
+              },
+              "close_positions": {
+                "right": [
+                  -14.3715,
+                  5.03419,
+                  1.46926
+                ],
+                "left": [
+                  -14.3714,
+                  4.8749,
+                  1.46931
+                ]
+              },
+              "squeeze_positions": {
+                "right": [
+                  -14.3715,
+                  5.03419,
+                  1.46926
+                ],
+                "left": [
+                  -14.3714,
+                  4.8749,
+                  1.46931
+                ]
+              },
+              "final_positions": {
+                "right": [
+                  -14.3727,
+                  5.03383,
+                  1.5844
+                ],
+                "left": [
+                  -14.37264,
+                  4.87534,
+                  1.58298
+                ]
+              },
+              "close_fingerpad_positions": {
+                "right_left_fingerpad": [
+                  -14.35239,
+                  5.01048,
+                  1.44613
+                ],
+                "right_right_fingerpad": [
+                  -14.39061,
+                  5.05789,
+                  1.49238
+                ],
+                "left_left_fingerpad": [
+                  -14.35216,
+                  4.89911,
+                  1.44605
+                ],
+                "left_right_fingerpad": [
+                  -14.39063,
+                  4.8507,
+                  1.49256
+                ]
+              },
+              "close_gripper_contact_geom_positions": {
+                "right_left_fingerpad": [
+                  -14.35239,
+                  5.01048,
+                  1.44613
+                ],
+                "right_left_fingertip": [
+                  -14.34962,
+                  5.00827,
+                  1.44461
+                ],
+                "right_right_fingerpad": [
+                  -14.39061,
+                  5.05789,
+                  1.49238
+                ],
+                "right_right_fingertip": [
+                  -14.39368,
+                  5.05995,
+                  1.49349
+                ],
+                "left_left_fingerpad": [
+                  -14.35216,
+                  4.89911,
+                  1.44605
+                ],
+                "left_left_fingertip": [
+                  -14.34941,
+                  4.90135,
+                  1.44455
+                ],
+                "left_right_fingerpad": [
+                  -14.39063,
+                  4.8507,
+                  1.49256
+                ],
+                "left_right_fingertip": [
+                  -14.39365,
+                  4.84858,
+                  1.49369
+                ]
+              },
+              "squeeze_gripper_contact_geom_positions": {
+                "right_left_fingerpad": [
+                  -14.35239,
+                  5.01048,
+                  1.44613
+                ],
+                "right_left_fingertip": [
+                  -14.34962,
+                  5.00827,
+                  1.44461
+                ],
+                "right_right_fingerpad": [
+                  -14.39061,
+                  5.05789,
+                  1.49238
+                ],
+                "right_right_fingertip": [
+                  -14.39368,
+                  5.05995,
+                  1.49349
+                ],
+                "left_left_fingerpad": [
+                  -14.35216,
+                  4.89911,
+                  1.44605
+                ],
+                "left_left_fingertip": [
+                  -14.34941,
+                  4.90135,
+                  1.44455
+                ],
+                "left_right_fingerpad": [
+                  -14.39063,
+                  4.8507,
+                  1.49256
+                ],
+                "left_right_fingertip": [
+                  -14.39365,
+                  4.84858,
+                  1.49369
+                ]
+              },
+              "final_fingerpad_positions": {
+                "right_left_fingerpad": [
+                  -14.36503,
+                  5.01519,
+                  1.5641
+                ],
+                "right_right_fingerpad": [
+                  -14.38037,
+                  5.05247,
+                  1.6047
+                ],
+                "left_left_fingerpad": [
+                  -14.36531,
+                  4.894,
+                  1.5626
+                ],
+                "left_right_fingerpad": [
+                  -14.37998,
+                  4.85668,
+                  1.60337
+                ]
+              },
+              "final_gripper_contact_geom_positions": {
+                "right_left_fingerpad": [
+                  -14.36503,
+                  5.01519,
+                  1.5641
+                ],
+                "right_left_fingertip": [
+                  -14.36295,
+                  5.01278,
+                  1.56193
+                ],
+                "right_right_fingerpad": [
+                  -14.38037,
+                  5.05247,
+                  1.6047
+                ],
+                "right_right_fingertip": [
+                  -14.38358,
+                  5.05434,
+                  1.60572
+                ],
+                "left_left_fingerpad": [
+                  -14.36531,
+                  4.894,
+                  1.5626
+                ],
+                "left_left_fingertip": [
+                  -14.36325,
+                  4.89642,
+                  1.56042
+                ],
+                "left_right_fingerpad": [
+                  -14.37998,
+                  4.85668,
+                  1.60337
+                ],
+                "left_right_fingertip": [
+                  -14.38317,
+                  4.85478,
+                  1.60439
+                ]
+              },
+              "close_object_contact_pairs": [
+                {
+                  "geom1": "gripper0_right_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.002120242242919525,
+                  "pos": [
+                    -14.37261,
+                    4.98606,
+                    1.42478
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0014271127409972544,
+                  "pos": [
+                    -14.37222,
+                    4.98835,
+                    1.42676
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0018552411403924567,
+                  "pos": [
+                    -14.38334,
+                    5.07062,
+                    1.48847
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0020803324614542774,
+                  "pos": [
+                    -14.38325,
+                    5.06917,
+                    1.48839
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0020665565040663843,
+                  "pos": [
+                    -14.3726,
+                    4.92308,
+                    1.42439
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0013550979476216118,
+                  "pos": [
+                    -14.3722,
+                    4.92081,
+                    1.42639
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0018989027822096007,
+                  "pos": [
+                    -14.38335,
+                    4.83822,
+                    1.48844
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0021059983740872317,
+                  "pos": [
+                    -14.38327,
+                    4.83966,
+                    1.48837
+                  ]
+                }
+              ],
+              "squeeze_object_contact_pairs": [
+                {
+                  "geom1": "gripper0_right_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.002120242242919525,
+                  "pos": [
+                    -14.37261,
+                    4.98606,
+                    1.42478
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0014271127409972544,
+                  "pos": [
+                    -14.37222,
+                    4.98835,
+                    1.42676
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0018552411403924567,
+                  "pos": [
+                    -14.38334,
+                    5.07062,
+                    1.48847
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0020803324614542774,
+                  "pos": [
+                    -14.38325,
+                    5.06917,
+                    1.48839
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0020665565040663843,
+                  "pos": [
+                    -14.3726,
+                    4.92308,
+                    1.42439
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0013550979476216118,
+                  "pos": [
+                    -14.3722,
+                    4.92081,
+                    1.42639
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0018989027822096007,
+                  "pos": [
+                    -14.38335,
+                    4.83822,
+                    1.48844
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0021059983740872317,
+                  "pos": [
+                    -14.38327,
+                    4.83966,
+                    1.48837
+                  ]
+                }
+              ],
+              "final_object_contact_pairs": [
+                {
+                  "geom1": "gripper0_right_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.001403087753003475,
+                  "pos": [
+                    -14.39256,
+                    4.99295,
+                    1.54893
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0011606249344300976,
+                  "pos": [
+                    -14.39124,
+                    4.99513,
+                    1.55068
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.001211108086343216,
+                  "pos": [
+                    -14.37474,
+                    5.06506,
+                    1.59857
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0014353780360229058,
+                  "pos": [
+                    -14.37466,
+                    5.06355,
+                    1.59849
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0014352497636668797,
+                  "pos": [
+                    -14.39308,
+                    4.91592,
+                    1.54742
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.001197699409623804,
+                  "pos": [
+                    -14.39173,
+                    4.91375,
+                    1.54917
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0012276723602302967,
+                  "pos": [
+                    -14.37372,
+                    4.84386,
+                    1.59783
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_center_tote_b01_col_right",
+                  "dist": -0.0014613925129065488,
+                  "pos": [
+                    -14.37364,
+                    4.84536,
+                    1.59776
+                  ]
+                }
+              ],
+              "close_fingerpad_contacts": {
+                "right": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                },
+                "left": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                }
+              },
+              "final_fingerpad_contacts": {
+                "right": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                },
+                "left": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                }
+              }
+            },
+            "strict_physics": true
+          }
+        },
+        "inputs": {
+          "target": "input_1",
+          "object_name": "white_tote_b01_left_center",
+          "grasp_initial_base_pose": {
+            "xy": [
+              -13.099994861672092,
+              5.00499869562515
+            ],
+            "yaw": -3.1399662494659424,
+            "robot_base_pos": [
+              -13.099994861672092,
+              5.00499869562515,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              -3.1399662494659424
+            ]
+          }
+        },
+        "preconditions": [
+          "夹爪为空",
+          "底盘已停稳于 input_1"
+        ],
+        "expected_output": "成功抓取物体并提升至安全高度",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "move",
+        "description": "携带物体导航至放置工位 aux_output_1（Place Station 1）",
+        "success": true,
+        "message": "Moved to: aux_output_1",
+        "payload": {
+          "action": "move",
+          "target": "aux_output_1",
+          "resolved_station": "aux_output_1",
+          "goal_xy": [
+            0.11,
+            7.55
+          ],
+          "start_base_pose": {
+            "xy": [
+              -13.62267253604151,
+              4.956055245359507
+            ],
+            "yaw": -3.1400253772735596,
+            "robot_base_pos": [
+              -13.62267253604151,
+              4.956055245359507,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              -3.1400253772735596
+            ]
+          },
+          "final_base_pose": {
+            "xy": [
+              0.06432630241482742,
+              7.32931020084251
+            ],
+            "yaw": -3.13525652885437,
+            "robot_base_pos": [
+              0.06432630241482742,
+              7.32931020084251,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              -3.13525652885437
+            ]
+          },
+          "waypoints": 46,
+          "pre_pick_approach_profile": {},
+          "post_pick_retreat": [
+            [
+              -13.302672799915213,
+              4.956466194383522
+            ],
+            [
+              -12.972673072034969,
+              4.956889985564538
+            ]
+          ],
+          "distance_to_goal": 0.22536653279330301,
+          "reached": true
+        },
+        "inputs": {
+          "target": "aux_output_1"
+        },
+        "preconditions": [
+          "夹爪已持握物体",
+          "手臂保持搬运姿态"
+        ],
+        "expected_output": "机器人到达 aux_output_1 停止点",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "place_down",
+        "description": "在 aux_output_1 放下第一个白边储物箱",
+        "success": true,
+        "message": "Physics place OK: aux_output_1",
+        "payload": {
+          "action": "place_down",
+          "target": "aux_output_1",
+          "method": "physics",
+          "ok": true,
+          "fallback": null
+        },
+        "inputs": {
+          "target": "aux_output_1"
+        },
+        "preconditions": [
+          "底盘已停稳于放置点",
+          "目标桌面已清空"
+        ],
+        "expected_output": "物体放置成功，夹爪释放并收回",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "move",
+        "description": "导航返回取货工位 input_1（Pick Station 6）",
+        "success": true,
+        "message": "Moved to: input_1",
+        "payload": {
+          "action": "move",
+          "target": "input_1",
+          "resolved_station": "input_1",
+          "goal_xy": [
+            -13.1,
+            5.01
+          ],
+          "start_base_pose": {
+            "xy": [
+              0.0642229690113823,
+              7.32879468074045
+            ],
+            "yaw": 1.5010273456573486,
+            "robot_base_pos": [
+              0.0642229690113823,
+              7.32879468074045,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              1.5010273456573486
+            ]
+          },
+          "final_base_pose": {
+            "xy": [
+              -13.099447729353171,
+              5.001281807974799
+            ],
+            "yaw": 1.4914885759353638,
+            "robot_base_pos": [
+              -13.099447729353171,
+              5.001281807974799,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              1.4914885759353638
+            ]
+          },
+          "waypoints": 47,
+          "pre_pick_approach_profile": {},
+          "post_pick_retreat": [],
+          "distance_to_goal": 0.008735666835200842,
+          "reached": true
+        },
+        "inputs": {
+          "target": "input_1",
+          "object_name": "white_tote_b01_left_center"
+        },
+        "preconditions": [
+          "夹爪为空",
+          "底盘静止"
+        ],
+        "expected_output": "机器人到达 input_1 停止点",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "pick_up",
+        "description": "在 input_1 抓取第二个白边储物箱",
+        "success": true,
+        "message": "Strict physics site grasp OK: input_1",
+        "payload": {
+          "action": "pick_up",
+          "target": "input_1",
+          "object_name": "white_tote_b01_left_front",
+          "grasp_initial_base_pose": {
+            "xy": [
+              -13.099447729353171,
+              5.001281807974799
+            ],
+            "yaw": 1.4914885759353638,
+            "robot_base_pos": [
+              -13.099447729353171,
+              5.001281807974799,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              1.4914885759353638
+            ]
+          },
+          "method": "strict_physics_site_grasp",
+          "ok": true,
+          "transport_shortcuts_cleared": {
+            "attached": true,
+            "object_name": "white_tote_b01_left_front"
+          },
+          "fallback": {
+            "ok": true,
+            "object_name": "white_tote_b01_left_front",
+            "source": "input_1",
+            "joint_name": "white_tote_b01_left_front_joint0",
+            "left_site": [
+              -14.839087999999999,
+              4.1998679999999995,
+              1.4889781521965826
+            ],
+            "right_site": [
+              -14.509087999999998,
+              4.199868000000001,
+              1.4889781521965826
+            ],
+            "center_site": [
+              -14.674088,
+              4.414868,
+              1.4889781521965826
+            ],
+            "target_z": 1.5889781521965827,
+            "base_nudge": {
+              "enabled": true,
+              "moved": true,
+              "ok": true,
+              "start_xy": [
+                -13.099445822403958,
+                5.001283204350095
+              ],
+              "desired_xy": [
+                -13.624088000000675,
+                4.414866992683479
+              ],
+              "end_xy": [
+                -13.62407866694781,
+                4.414857270721111
+              ],
+              "turn": {
+                "enabled": true,
+                "turned": true,
+                "start_yaw": 1.4914885759353638,
+                "target_yaw": 3.141592653589793,
+                "end_yaw": 3.1415913105010986
+              }
+            },
+            "visual_grasp": {
+              "ok": true,
+              "method": "vertical_two_gripper_site_approach",
+              "grasp_status_after_close": {
+                "right": true,
+                "left": true
+              },
+              "grasp_status_after_lift": {
+                "right": true,
+                "left": true
+              },
+              "object_lift_delta": 0.2868636296353637,
+              "post_lift_hold_steps": 80,
+              "contact_grasp_ok": true,
+              "strict_grasp_ok": true,
+              "right_target": [
+                -14.374087999999999,
+                4.494868,
+                1.4689781521965826
+              ],
+              "left_target": [
+                -14.374087999999999,
+                4.334868,
+                1.4689781521965826
+              ],
+              "side_approach_vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "right_rot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "left_rot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pre_close_distances": {
+                "right": 0.00047115100100324474,
+                "left": 0.0005968384401350489
+              },
+              "close_distances": {
+                "right": 0.0030433572204222625,
+                "left": 0.0046723534249148236
+              },
+              "pre_close_positions": {
+                "right": [
+                  -14.37437,
+                  4.49484,
+                  1.46935
+                ],
+                "left": [
+                  -14.37446,
+                  4.33489,
+                  1.46944
+                ]
+              },
+              "close_positions": {
+                "right": [
+                  -14.37169,
+                  4.49633,
+                  1.47015
+                ],
+                "left": [
+                  -14.3729,
+                  4.33152,
+                  1.47202
+                ]
+              },
+              "squeeze_positions": {
+                "right": [
+                  -14.37169,
+                  4.49633,
+                  1.47015
+                ],
+                "left": [
+                  -14.3729,
+                  4.33152,
+                  1.47202
+                ]
+              },
+              "final_positions": {
+                "right": [
+                  -14.37301,
+                  4.49557,
+                  1.58347
+                ],
+                "left": [
+                  -14.3728,
+                  4.33397,
+                  1.58375
+                ]
+              },
+              "close_fingerpad_positions": {
+                "right_left_fingerpad": [
+                  -14.35285,
+                  4.47324,
+                  1.44775
+                ],
+                "right_right_fingerpad": [
+                  -14.39052,
+                  4.51941,
+                  1.49255
+                ],
+                "left_left_fingerpad": [
+                  -14.35311,
+                  4.3552,
+                  1.44956
+                ],
+                "left_right_fingerpad": [
+                  -14.3927,
+                  4.30785,
+                  1.49448
+                ]
+              },
+              "close_gripper_contact_geom_positions": {
+                "right_left_fingerpad": [
+                  -14.35285,
+                  4.47324,
+                  1.44775
+                ],
+                "right_left_fingertip": [
+                  -14.35016,
+                  4.471,
+                  1.44613
+                ],
+                "right_right_fingerpad": [
+                  -14.39052,
+                  4.51941,
+                  1.49255
+                ],
+                "right_right_fingertip": [
+                  -14.39358,
+                  4.52147,
+                  1.49368
+                ],
+                "left_left_fingerpad": [
+                  -14.35311,
+                  4.3552,
+                  1.44956
+                ],
+                "left_left_fingertip": [
+                  -14.35049,
+                  4.35747,
+                  1.44788
+                ],
+                "left_right_fingerpad": [
+                  -14.3927,
+                  4.30785,
+                  1.49448
+                ],
+                "left_right_fingertip": [
+                  -14.39561,
+                  4.30569,
+                  1.49577
+                ]
+              },
+              "squeeze_gripper_contact_geom_positions": {
+                "right_left_fingerpad": [
+                  -14.35285,
+                  4.47324,
+                  1.44775
+                ],
+                "right_left_fingertip": [
+                  -14.35016,
+                  4.471,
+                  1.44613
+                ],
+                "right_right_fingerpad": [
+                  -14.39052,
+                  4.51941,
+                  1.49255
+                ],
+                "right_right_fingertip": [
+                  -14.39358,
+                  4.52147,
+                  1.49368
+                ],
+                "left_left_fingerpad": [
+                  -14.35311,
+                  4.3552,
+                  1.44956
+                ],
+                "left_left_fingertip": [
+                  -14.35049,
+                  4.35747,
+                  1.44788
+                ],
+                "left_right_fingerpad": [
+                  -14.3927,
+                  4.30785,
+                  1.49448
+                ],
+                "left_right_fingertip": [
+                  -14.39561,
+                  4.30569,
+                  1.49577
+                ]
+              },
+              "final_fingerpad_positions": {
+                "right_left_fingerpad": [
+                  -14.36472,
+                  4.47666,
+                  1.56273
+                ],
+                "right_right_fingerpad": [
+                  -14.3813,
+                  4.51449,
+                  1.6042
+                ],
+                "left_left_fingerpad": [
+                  -14.36429,
+                  4.35291,
+                  1.56315
+                ],
+                "left_right_fingerpad": [
+                  -14.38132,
+                  4.31502,
+                  1.60435
+                ]
+              },
+              "final_gripper_contact_geom_positions": {
+                "right_left_fingerpad": [
+                  -14.36472,
+                  4.47666,
+                  1.56273
+                ],
+                "right_left_fingertip": [
+                  -14.36262,
+                  4.47427,
+                  1.56055
+                ],
+                "right_right_fingerpad": [
+                  -14.3813,
+                  4.51449,
+                  1.6042
+                ],
+                "right_right_fingertip": [
+                  -14.38448,
+                  4.51638,
+                  1.6053
+                ],
+                "left_left_fingerpad": [
+                  -14.36429,
+                  4.35291,
+                  1.56315
+                ],
+                "left_left_fingertip": [
+                  -14.36223,
+                  4.35531,
+                  1.56095
+                ],
+                "left_right_fingerpad": [
+                  -14.38132,
+                  4.31502,
+                  1.60435
+                ],
+                "left_right_fingertip": [
+                  -14.38443,
+                  4.31308,
+                  1.60551
+                ]
+              },
+              "close_object_contact_pairs": [
+                {
+                  "geom1": "gripper0_right_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.002166054564223747,
+                  "pos": [
+                    -14.3741,
+                    4.44947,
+                    1.42672
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0014146530434158366,
+                  "pos": [
+                    -14.37363,
+                    4.45172,
+                    1.42871
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0018648754382099958,
+                  "pos": [
+                    -14.3834,
+                    4.53208,
+                    1.48843
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0021062919105496263,
+                  "pos": [
+                    -14.38334,
+                    4.53062,
+                    1.48835
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0020462921600153065,
+                  "pos": [
+                    -14.37517,
+                    4.37805,
+                    1.42839
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.001150653368792976,
+                  "pos": [
+                    -14.37471,
+                    4.37587,
+                    1.4304
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0019807393386910193,
+                  "pos": [
+                    -14.38728,
+                    4.29591,
+                    1.48836
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.002168509930752916,
+                  "pos": [
+                    -14.38719,
+                    4.29735,
+                    1.4883
+                  ]
+                }
+              ],
+              "squeeze_object_contact_pairs": [
+                {
+                  "geom1": "gripper0_right_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.002166054564223747,
+                  "pos": [
+                    -14.3741,
+                    4.44947,
+                    1.42672
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0014146530434158366,
+                  "pos": [
+                    -14.37363,
+                    4.45172,
+                    1.42871
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0018648754382099958,
+                  "pos": [
+                    -14.3834,
+                    4.53208,
+                    1.48843
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0021062919105496263,
+                  "pos": [
+                    -14.38334,
+                    4.53062,
+                    1.48835
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0020462921600153065,
+                  "pos": [
+                    -14.37517,
+                    4.37805,
+                    1.42839
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.001150653368792976,
+                  "pos": [
+                    -14.37471,
+                    4.37587,
+                    1.4304
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0019807393386910193,
+                  "pos": [
+                    -14.38728,
+                    4.29591,
+                    1.48836
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.002168509930752916,
+                  "pos": [
+                    -14.38719,
+                    4.29735,
+                    1.4883
+                  ]
+                }
+              ],
+              "final_object_contact_pairs": [
+                {
+                  "geom1": "gripper0_right_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0015312434664990224,
+                  "pos": [
+                    -14.39207,
+                    4.45439,
+                    1.54739
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0012199085334734527,
+                  "pos": [
+                    -14.39079,
+                    4.45658,
+                    1.54917
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0012874658090729005,
+                  "pos": [
+                    -14.37543,
+                    4.52721,
+                    1.59841
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0015218489776710818,
+                  "pos": [
+                    -14.37537,
+                    4.52571,
+                    1.59831
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0014365961163040515,
+                  "pos": [
+                    -14.392,
+                    4.37482,
+                    1.54792
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0010824694722447602,
+                  "pos": [
+                    -14.39071,
+                    4.37266,
+                    1.54971
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.001245549837158467,
+                  "pos": [
+                    -14.37774,
+                    4.30347,
+                    1.5961
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_front_tote_b01_col_right",
+                  "dist": -0.0014662601518477543,
+                  "pos": [
+                    -14.37765,
+                    4.30495,
+                    1.59603
+                  ]
+                }
+              ],
+              "close_fingerpad_contacts": {
+                "right": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                },
+                "left": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                }
+              },
+              "final_fingerpad_contacts": {
+                "right": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                },
+                "left": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                }
+              }
+            },
+            "strict_physics": true
+          }
+        },
+        "inputs": {
+          "target": "input_1",
+          "object_name": "white_tote_b01_left_front",
+          "grasp_initial_base_pose": {
+            "xy": [
+              -13.099447729353171,
+              5.001281807974799
+            ],
+            "yaw": 1.4914885759353638,
+            "robot_base_pos": [
+              -13.099447729353171,
+              5.001281807974799,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              1.4914885759353638
+            ]
+          }
+        },
+        "preconditions": [
+          "夹爪为空",
+          "底盘已停稳于 input_1"
+        ],
+        "expected_output": "成功抓取物体并提升至安全高度",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "move",
+        "description": "携带物体导航至放置工位 aux_output_1（Place Station 1）",
+        "success": true,
+        "message": "Moved to: aux_output_1",
+        "payload": {
+          "action": "move",
+          "target": "aux_output_1",
+          "resolved_station": "aux_output_1",
+          "goal_xy": [
+            0.11,
+            7.55
+          ],
+          "start_base_pose": {
+            "xy": [
+              -13.624061366945874,
+              4.414857304000769
+            ],
+            "yaw": -3.1409404277801514,
+            "robot_base_pos": [
+              -13.624061366945874,
+              4.414857304000769,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              -3.1409404277801514
+            ]
+          },
+          "final_base_pose": {
+            "xy": [
+              0.05745684663162695,
+              7.332520570269533
+            ],
+            "yaw": -3.139709234237671,
+            "robot_base_pos": [
+              0.05745684663162695,
+              7.332520570269533,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              -3.139709234237671
+            ]
+          },
+          "waypoints": 47,
+          "pre_pick_approach_profile": {},
+          "post_pick_retreat": [
+            [
+              -13.304061366962475,
+              4.414854044350351
+            ],
+            [
+              -12.974061366979598,
+              4.414850682835857
+            ]
+          ],
+          "distance_to_goal": 0.223736642778472,
+          "reached": true
+        },
+        "inputs": {
+          "target": "aux_output_1"
+        },
+        "preconditions": [
+          "夹爪已持握物体",
+          "手臂保持搬运姿态"
+        ],
+        "expected_output": "机器人到达 aux_output_1 停止点",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "place_down",
+        "description": "在 aux_output_1 放下第二个白边储物箱",
+        "success": true,
+        "message": "Physics place OK: aux_output_1",
+        "payload": {
+          "action": "place_down",
+          "target": "aux_output_1",
+          "method": "physics",
+          "ok": true,
+          "fallback": null
+        },
+        "inputs": {
+          "target": "aux_output_1"
+        },
+        "preconditions": [
+          "底盘已停稳于放置点",
+          "目标桌面已清空"
+        ],
+        "expected_output": "物体放置成功，夹爪释放并收回",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "move",
+        "description": "导航返回取货工位 input_1（Pick Station 6）",
+        "success": true,
+        "message": "Moved to: input_1",
+        "payload": {
+          "action": "move",
+          "target": "input_1",
+          "resolved_station": "input_1",
+          "goal_xy": [
+            -13.1,
+            5.01
+          ],
+          "start_base_pose": {
+            "xy": [
+              0.05735051600399599,
+              7.331967901953207
+            ],
+            "yaw": 1.4949302673339844,
+            "robot_base_pos": [
+              0.05735051600399599,
+              7.331967901953207,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              1.4949302673339844
+            ]
+          },
+          "final_base_pose": {
+            "xy": [
+              -13.096973254366581,
+              5.006027842069818
+            ],
+            "yaw": 1.4858859777450562,
+            "robot_base_pos": [
+              -13.096973254366581,
+              5.006027842069818,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              1.4858859777450562
+            ]
+          },
+          "waypoints": 47,
+          "pre_pick_approach_profile": {},
+          "post_pick_retreat": [],
+          "distance_to_goal": 0.004993919077410431,
+          "reached": true
+        },
+        "inputs": {
+          "target": "input_1",
+          "object_name": "white_tote_b01_left_center"
+        },
+        "preconditions": [
+          "夹爪为空",
+          "底盘静止"
+        ],
+        "expected_output": "机器人到达 input_1 停止点",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "pick_up",
+        "description": "在 input_1 抓取第三个白边储物箱",
+        "success": true,
+        "message": "Strict physics site grasp OK: input_1",
+        "payload": {
+          "action": "pick_up",
+          "target": "input_1",
+          "object_name": "white_tote_b01_left_back",
+          "grasp_initial_base_pose": {
+            "xy": [
+              -13.096973254366581,
+              5.006027842069818
+            ],
+            "yaw": 1.4858859777450562,
+            "robot_base_pos": [
+              -13.096973254366581,
+              5.006027842069818,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              1.4858859777450562
+            ]
+          },
+          "method": "strict_physics_site_grasp",
+          "ok": true,
+          "transport_shortcuts_cleared": {
+            "attached": true,
+            "object_name": "white_tote_b01_left_back"
+          },
+          "fallback": {
+            "ok": true,
+            "object_name": "white_tote_b01_left_back",
+            "source": "input_1",
+            "joint_name": "white_tote_b01_left_back_joint0",
+            "left_site": [
+              -14.839087999999999,
+              5.305966,
+              1.4889781521965826
+            ],
+            "right_site": [
+              -14.509088,
+              5.305966,
+              1.4889781521965826
+            ],
+            "center_site": [
+              -14.674088,
+              5.520966,
+              1.4889781521965826
+            ],
+            "target_z": 1.5889781521965827,
+            "base_nudge": {
+              "enabled": true,
+              "moved": true,
+              "ok": true,
+              "start_xy": [
+                -13.09697184349892,
+                5.006029601137853
+              ],
+              "desired_xy": [
+                -13.624088000000675,
+                5.520964992683479
+              ],
+              "end_xy": [
+                -13.62268959110533,
+                5.5195945293005515
+              ],
+              "turn": {
+                "enabled": true,
+                "turned": true,
+                "start_yaw": 1.4858859777450562,
+                "target_yaw": 3.141592653589793,
+                "end_yaw": 3.1415913105010986
+              }
+            },
+            "visual_grasp": {
+              "ok": true,
+              "method": "vertical_two_gripper_site_approach",
+              "grasp_status_after_close": {
+                "right": true,
+                "left": true
+              },
+              "grasp_status_after_lift": {
+                "right": true,
+                "left": true
+              },
+              "object_lift_delta": 0.30201160588120746,
+              "post_lift_hold_steps": 80,
+              "contact_grasp_ok": true,
+              "strict_grasp_ok": true,
+              "right_target": [
+                -14.374087999999999,
+                5.600966,
+                1.4689781521965826
+              ],
+              "left_target": [
+                -14.374087999999999,
+                5.4409659999999995,
+                1.4689781521965826
+              ],
+              "side_approach_vector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "right_rot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "left_rot_delta": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "pre_close_distances": {
+                "right": 0.0004584641834325223,
+                "left": 0.0005879085212644375
+              },
+              "close_distances": {
+                "right": 0.0028365085972682615,
+                "left": 0.003282398587991994
+              },
+              "pre_close_positions": {
+                "right": [
+                  -14.37436,
+                  5.60092,
+                  1.46935
+                ],
+                "left": [
+                  -14.37445,
+                  5.441,
+                  1.46944
+                ]
+              },
+              "close_positions": {
+                "right": [
+                  -14.37155,
+                  5.60187,
+                  1.46986
+                ],
+                "left": [
+                  -14.3722,
+                  5.43893,
+                  1.47073
+                ]
+              },
+              "squeeze_positions": {
+                "right": [
+                  -14.37155,
+                  5.60187,
+                  1.46986
+                ],
+                "left": [
+                  -14.3722,
+                  5.43893,
+                  1.47073
+                ]
+              },
+              "final_positions": {
+                "right": [
+                  -14.37291,
+                  5.60108,
+                  1.58372
+                ],
+                "left": [
+                  -14.37266,
+                  5.44067,
+                  1.58346
+                ]
+              },
+              "close_fingerpad_positions": {
+                "right_left_fingerpad": [
+                  -14.35249,
+                  5.57836,
+                  1.44716
+                ],
+                "right_right_fingerpad": [
+                  -14.3906,
+                  5.62537,
+                  1.49256
+                ],
+                "left_left_fingerpad": [
+                  -14.35257,
+                  5.46288,
+                  1.44797
+                ],
+                "left_right_fingerpad": [
+                  -14.39183,
+                  5.41498,
+                  1.49349
+                ]
+              },
+              "close_gripper_contact_geom_positions": {
+                "right_left_fingerpad": [
+                  -14.35249,
+                  5.57836,
+                  1.44716
+                ],
+                "right_left_fingertip": [
+                  -14.34978,
+                  5.57613,
+                  1.44558
+                ],
+                "right_right_fingerpad": [
+                  -14.3906,
+                  5.62537,
+                  1.49256
+                ],
+                "right_right_fingertip": [
+                  -14.39364,
+                  5.62744,
+                  1.49369
+                ],
+                "left_left_fingerpad": [
+                  -14.35257,
+                  5.46288,
+                  1.44797
+                ],
+                "left_left_fingertip": [
+                  -14.34989,
+                  5.46515,
+                  1.44637
+                ],
+                "left_right_fingerpad": [
+                  -14.39183,
+                  5.41498,
+                  1.49349
+                ],
+                "left_right_fingertip": [
+                  -14.39479,
+                  5.41283,
+                  1.49473
+                ]
+              },
+              "squeeze_gripper_contact_geom_positions": {
+                "right_left_fingerpad": [
+                  -14.35249,
+                  5.57836,
+                  1.44716
+                ],
+                "right_left_fingertip": [
+                  -14.34978,
+                  5.57613,
+                  1.44558
+                ],
+                "right_right_fingerpad": [
+                  -14.3906,
+                  5.62537,
+                  1.49256
+                ],
+                "right_right_fingertip": [
+                  -14.39364,
+                  5.62744,
+                  1.49369
+                ],
+                "left_left_fingerpad": [
+                  -14.35257,
+                  5.46288,
+                  1.44797
+                ],
+                "left_left_fingertip": [
+                  -14.34989,
+                  5.46515,
+                  1.44637
+                ],
+                "left_right_fingerpad": [
+                  -14.39183,
+                  5.41498,
+                  1.49349
+                ],
+                "left_right_fingertip": [
+                  -14.39479,
+                  5.41283,
+                  1.49473
+                ]
+              },
+              "final_fingerpad_positions": {
+                "right_left_fingerpad": [
+                  -14.36527,
+                  5.58243,
+                  1.56327
+                ],
+                "right_right_fingerpad": [
+                  -14.38056,
+                  5.61974,
+                  1.60418
+                ],
+                "left_left_fingerpad": [
+                  -14.36503,
+                  5.45934,
+                  1.56309
+                ],
+                "left_right_fingerpad": [
+                  -14.38029,
+                  5.42201,
+                  1.60382
+                ]
+              },
+              "final_gripper_contact_geom_positions": {
+                "right_left_fingerpad": [
+                  -14.36527,
+                  5.58243,
+                  1.56327
+                ],
+                "right_left_fingertip": [
+                  -14.36319,
+                  5.58002,
+                  1.56109
+                ],
+                "right_right_fingerpad": [
+                  -14.38056,
+                  5.61974,
+                  1.60418
+                ],
+                "right_right_fingertip": [
+                  -14.38377,
+                  5.62162,
+                  1.60523
+                ],
+                "left_left_fingerpad": [
+                  -14.36503,
+                  5.45934,
+                  1.56309
+                ],
+                "left_left_fingertip": [
+                  -14.36297,
+                  5.46175,
+                  1.5609
+                ],
+                "left_right_fingerpad": [
+                  -14.38029,
+                  5.42201,
+                  1.60382
+                ],
+                "left_right_fingertip": [
+                  -14.38347,
+                  5.42011,
+                  1.60489
+                ]
+              },
+              "close_object_contact_pairs": [
+                {
+                  "geom1": "gripper0_right_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0021776041776243107,
+                  "pos": [
+                    -14.37341,
+                    5.55437,
+                    1.42606
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0014357785099958346,
+                  "pos": [
+                    -14.37297,
+                    5.55664,
+                    1.42804
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0018775978525679639,
+                  "pos": [
+                    -14.38343,
+                    5.638,
+                    1.48843
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0021055966910480126,
+                  "pos": [
+                    -14.38336,
+                    5.63655,
+                    1.48836
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0020724831550065826,
+                  "pos": [
+                    -14.37392,
+                    5.48629,
+                    1.42664
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0012560943726473224,
+                  "pos": [
+                    -14.37349,
+                    5.48406,
+                    1.42864
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0019556007062780495,
+                  "pos": [
+                    -14.38543,
+                    5.40279,
+                    1.48838
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.002150953475803094,
+                  "pos": [
+                    -14.38535,
+                    5.40423,
+                    1.48832
+                  ]
+                }
+              ],
+              "squeeze_object_contact_pairs": [
+                {
+                  "geom1": "gripper0_right_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0021776041776243107,
+                  "pos": [
+                    -14.37341,
+                    5.55437,
+                    1.42606
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0014357785099958346,
+                  "pos": [
+                    -14.37297,
+                    5.55664,
+                    1.42804
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0018775978525679639,
+                  "pos": [
+                    -14.38343,
+                    5.638,
+                    1.48843
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0021055966910480126,
+                  "pos": [
+                    -14.38336,
+                    5.63655,
+                    1.48836
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0020724831550065826,
+                  "pos": [
+                    -14.37392,
+                    5.48629,
+                    1.42664
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0012560943726473224,
+                  "pos": [
+                    -14.37349,
+                    5.48406,
+                    1.42864
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0019556007062780495,
+                  "pos": [
+                    -14.38543,
+                    5.40279,
+                    1.48838
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.002150953475803094,
+                  "pos": [
+                    -14.38535,
+                    5.40423,
+                    1.48832
+                  ]
+                }
+              ],
+              "final_object_contact_pairs": [
+                {
+                  "geom1": "gripper0_right_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0014482035086652353,
+                  "pos": [
+                    -14.39283,
+                    5.56025,
+                    1.5481
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.001197169337595581,
+                  "pos": [
+                    -14.39151,
+                    5.56243,
+                    1.54986
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0012292217491328232,
+                  "pos": [
+                    -14.37435,
+                    5.63264,
+                    1.59871
+                  ]
+                },
+                {
+                  "geom1": "gripper0_right_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0014599299067037034,
+                  "pos": [
+                    -14.37427,
+                    5.63114,
+                    1.59862
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0014055795021812624,
+                  "pos": [
+                    -14.39279,
+                    5.48131,
+                    1.54797
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_left_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.001143928309184998,
+                  "pos": [
+                    -14.39145,
+                    5.47914,
+                    1.54973
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingertip_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0012105443280045767,
+                  "pos": [
+                    -14.37508,
+                    5.40971,
+                    1.59718
+                  ]
+                },
+                {
+                  "geom1": "gripper0_left_right_fingerpad_collision",
+                  "geom2": "white_tote_b01_left_back_tote_b01_col_right",
+                  "dist": -0.0014395694805942514,
+                  "pos": [
+                    -14.375,
+                    5.4112,
+                    1.59711
+                  ]
+                }
+              ],
+              "close_fingerpad_contacts": {
+                "right": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                },
+                "left": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                }
+              },
+              "final_fingerpad_contacts": {
+                "right": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                },
+                "left": {
+                  "left_fingerpad": true,
+                  "right_fingerpad": true
+                }
+              }
+            },
+            "strict_physics": true
+          }
+        },
+        "inputs": {
+          "target": "input_1",
+          "object_name": "white_tote_b01_left_back",
+          "grasp_initial_base_pose": {
+            "xy": [
+              -13.096973254366581,
+              5.006027842069818
+            ],
+            "yaw": 1.4858859777450562,
+            "robot_base_pos": [
+              -13.096973254366581,
+              5.006027842069818,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              1.4858859777450562
+            ]
+          }
+        },
+        "preconditions": [
+          "夹爪为空",
+          "底盘已停稳于 input_1"
+        ],
+        "expected_output": "成功抓取物体并提升至安全高度",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "move",
+        "description": "携带物体导航至放置工位 aux_output_1（Place Station 1）",
+        "success": true,
+        "message": "Moved to: aux_output_1",
+        "payload": {
+          "action": "move",
+          "target": "aux_output_1",
+          "resolved_station": "aux_output_1",
+          "goal_xy": [
+            0.11,
+            7.55
+          ],
+          "start_base_pose": {
+            "xy": [
+              -13.622669743052066,
+              5.519596971703406
+            ],
+            "yaw": -3.1406333446502686,
+            "robot_base_pos": [
+              -13.622669743052066,
+              5.519596971703406,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              -3.1406333446502686
+            ]
+          },
+          "final_base_pose": {
+            "xy": [
+              0.05733724908569407,
+              7.332346738630391
+            ],
+            "yaw": -3.1361420154571533,
+            "robot_base_pos": [
+              0.05733724908569407,
+              7.332346738630391,
+              0.0
+            ],
+            "robot_base_ori": [
+              0.0,
+              0.0,
+              -3.1361420154571533
+            ]
+          },
+          "waypoints": 44,
+          "pre_pick_approach_profile": {},
+          "post_pick_retreat": [
+            [
+              -13.302670014316748,
+              5.519180307183224
+            ],
+            [
+              -12.97267029405845,
+              5.518750621896787
+            ]
+          ],
+          "distance_to_goal": 0.2239337123317736,
+          "reached": true
+        },
+        "inputs": {
+          "target": "aux_output_1"
+        },
+        "preconditions": [
+          "夹爪已持握物体",
+          "手臂保持搬运姿态"
+        ],
+        "expected_output": "机器人到达 aux_output_1 停止点",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      },
+      {
+        "skill": "place_down",
+        "description": "在 aux_output_1 放下第三个白边储物箱",
+        "success": true,
+        "message": "Physics place OK: aux_output_1",
+        "payload": {
+          "action": "place_down",
+          "target": "aux_output_1",
+          "method": "physics",
+          "ok": true,
+          "fallback": null
+        },
+        "inputs": {
+          "target": "aux_output_1"
+        },
+        "preconditions": [
+          "底盘已停稳于放置点",
+          "目标桌面已清空"
+        ],
+        "expected_output": "物体放置成功，夹爪释放并收回",
+        "timeout": 3000.0,
+        "retries": 0,
+        "attempts": 1
+      }
+    ],
+    "thinking": {
+      "version": "2.0",
+      "task_understanding": "将三个白边储物箱从Pick Station 6（input_1）搬运至Place Station 1（aux_output_1），由于每次只能搬运一个物体，需分三轮完成。",
+      "selection_reason": "根据约束规则，每次只能携带一个物体，因此需要将三个箱子的搬运拆分为三轮独立的 move→pick_up→move→place_down 流程。当前场景物体映射中 input_1 对应 white_tote_b01_left_center，其余两个物体名称需从任务坐标参考中获取。",
+      "execution_steps": [
+        "导航至取货工位 input_1（Pick Station 6）",
+        "在 input_1 抓取第一个白边储物箱",
+        "携带物体导航至放置工位 aux_output_1（Place Station 1）",
+        "在 aux_output_1 放下第一个白边储物箱",
+        "导航返回取货工位 input_1（Pick Station 6）",
+        "在 input_1 抓取第二个白边储物箱",
+        "携带物体导航至放置工位 aux_output_1（Place Station 1）",
+        "在 aux_output_1 放下第二个白边储物箱",
+        "导航返回取货工位 input_1（Pick Station 6）",
+        "在 input_1 抓取第三个白边储物箱",
+        "携带物体导航至放置工位 aux_output_1（Place Station 1）",
+        "在 aux_output_1 放下第三个白边储物箱"
+      ],
+      "plan_summary": [
+        {
+          "skill": "move",
+          "description": "导航至取货工位 input_1（Pick Station 6）"
+        },
+        {
+          "skill": "pick_up",
+          "description": "在 input_1 抓取第一个白边储物箱"
+        },
+        {
+          "skill": "move",
+          "description": "携带物体导航至放置工位 aux_output_1（Place Station 1）"
+        },
+        {
+          "skill": "place_down",
+          "description": "在 aux_output_1 放下第一个白边储物箱"
+        },
+        {
+          "skill": "move",
+          "description": "导航返回取货工位 input_1（Pick Station 6）"
+        },
+        {
+          "skill": "pick_up",
+          "description": "在 input_1 抓取第二个白边储物箱"
+        },
+        {
+          "skill": "move",
+          "description": "携带物体导航至放置工位 aux_output_1（Place Station 1）"
+        },
+        {
+          "skill": "place_down",
+          "description": "在 aux_output_1 放下第二个白边储物箱"
+        },
+        {
+          "skill": "move",
+          "description": "导航返回取货工位 input_1（Pick Station 6）"
+        },
+        {
+          "skill": "pick_up",
+          "description": "在 input_1 抓取第三个白边储物箱"
+        },
+        {
+          "skill": "move",
+          "description": "携带物体导航至放置工位 aux_output_1（Place Station 1）"
+        },
+        {
+          "skill": "place_down",
+          "description": "在 aux_output_1 放下第三个白边储物箱"
+        }
+      ],
+      "result_explanation": "任务要求搬运三个白边储物箱，受限于每次只能携带一个物体的约束，规划为三轮完整的 move→pick_up→move→place_down 流程。Pick Station 6 映射为 input_1，Place Station 1 映射为 aux_output_1，三个物体名称分别为 white_tote_b01_left_center、white_tote_b01_left_front、white_tote_b01_left_back。"
+    },
+    "planner_raw": "{\"understanding\":\"将三个白边储物箱从Pick Station 6（input_1）搬运至Place Station 1（aux_output_1），由于每次只能搬运一个物体，需分三轮完成。\",\"reason\":\"根据约束规则，每次只能携带一个物体，因此需要将三个箱子的搬运拆分为三轮独立的 move→pick_up→move→place_down 流程。当前场景物体映射中 input_1 对应 white_tote_b01_left_center，其余两个物体名称需从任务坐标参考中获取。\",\"plan\":[{\"skill_name\":\"move\",\"description\":\"导航至取货工位 input_1（Pick Station 6）\",\"inputs\":{\"target\":\"input_1\"},\"preconditions\":[\"底盘静止于起始位置\",\"夹爪为空\"],\"expected_output\":\"机器人到达 input_1 停止点\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"pick_up\",\"description\":\"在 input_1 抓取第一个白边储物箱\",\"inputs\":{\"target\":\"input_1\",\"object_name\":\"white_tote_b01_left_center\"},\"preconditions\":[\"夹爪为空\",\"底盘已停稳于 input_1\"],\"expected_output\":\"成功抓取物体并提升至安全高度\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"move\",\"description\":\"携带物体导航至放置工位 aux_output_1（Place Station 1）\",\"inputs\":{\"target\":\"aux_output_1\"},\"preconditions\":[\"夹爪已持握物体\",\"手臂保持搬运姿态\"],\"expected_output\":\"机器人到达 aux_output_1 停止点\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"place_down\",\"description\":\"在 aux_output_1 放下第一个白边储物箱\",\"inputs\":{\"target\":\"aux_output_1\"},\"preconditions\":[\"底盘已停稳于放置点\",\"目标桌面已清空\"],\"expected_output\":\"物体放置成功，夹爪释放并收回\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"move\",\"description\":\"导航返回取货工位 input_1（Pick Station 6）\",\"inputs\":{\"target\":\"input_1\"},\"preconditions\":[\"夹爪为空\",\"底盘静止\"],\"expected_output\":\"机器人到达 input_1 停止点\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"pick_up\",\"description\":\"在 input_1 抓取第二个白边储物箱\",\"inputs\":{\"target\":\"input_1\",\"object_name\":\"white_tote_b01_left_front\"},\"preconditions\":[\"夹爪为空\",\"底盘已停稳于 input_1\"],\"expected_output\":\"成功抓取物体并提升至安全高度\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"move\",\"description\":\"携带物体导航至放置工位 aux_output_1（Place Station 1）\",\"inputs\":{\"target\":\"aux_output_1\"},\"preconditions\":[\"夹爪已持握物体\",\"手臂保持搬运姿态\"],\"expected_output\":\"机器人到达 aux_output_1 停止点\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"place_down\",\"description\":\"在 aux_output_1 放下第二个白边储物箱\",\"inputs\":{\"target\":\"aux_output_1\"},\"preconditions\":[\"底盘已停稳于放置点\",\"目标桌面已清空\"],\"expected_output\":\"物体放置成功，夹爪释放并收回\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"move\",\"description\":\"导航返回取货工位 input_1（Pick Station 6）\",\"inputs\":{\"target\":\"input_1\"},\"preconditions\":[\"夹爪为空\",\"底盘静止\"],\"expected_output\":\"机器人到达 input_1 停止点\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"pick_up\",\"description\":\"在 input_1 抓取第三个白边储物箱\",\"inputs\":{\"target\":\"input_1\",\"object_name\":\"white_tote_b01_left_back\"},\"preconditions\":[\"夹爪为空\",\"底盘已停稳于 input_1\"],\"expected_output\":\"成功抓取物体并提升至安全高度\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"move\",\"description\":\"携带物体导航至放置工位 aux_output_1（Place Station 1）\",\"inputs\":{\"target\":\"aux_output_1\"},\"preconditions\":[\"夹爪已持握物体\",\"手臂保持搬运姿态\"],\"expected_output\":\"机器人到达 aux_output_1 停止点\",\"timeout\":300,\"retries\":0},{\"skill_name\":\"place_down\",\"description\":\"在 aux_output_1 放下第三个白边储物箱\",\"inputs\":{\"target\":\"aux_output_1\"},\"preconditions\":[\"底盘已停稳于放置点\",\"目标桌面已清空\"],\"expected_output\":\"物体放置成功，夹爪释放并收回\",\"timeout\":300,\"retries\":0}],\"explanation\":\"任务要求搬运三个白边储物箱，受限于每次只能携带一个物体的约束，规划为三轮完整的 move→pick_up→move→place_down 流程。Pick Station 6 映射为 input_1，Place Station 1 映射为 aux_output_1，三个物体名称分别为 white_tote_b01_left_center、white_tote_b01_left_front、white_tote_b01_left_back。\"}",
+    "plan_warnings": [],
+    "elapsed_ms": 496532.1
+  },
+  "elapsed_sec": 507.287,
+  "error": null,
+  "traceback": null,
+  "phase": "before_close",
+  "saved_at": "2026-08-16 22:49:20"
+}

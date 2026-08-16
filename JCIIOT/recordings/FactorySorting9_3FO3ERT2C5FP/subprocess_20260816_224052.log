@@ -1,0 +1,33 @@
+command: C:\Users\thoth\anaconda3\envs\jciiot2026\python.exe D:\projects\jciiot\JCIIOT2026\JCIIOT\src\robot_agent\task_subprocess_runner.py --task "Move the three white-rimmed storage bins from Pick Station 6 to Place Station 1." --task-index 4 --timestamp 20260816_224052 --result-json D:\projects\jciiot\JCIIOT2026\JCIIOT\recordings\FactorySorting9_3FO3ERT2C5FP\result_20260816_224052.json --app-dir D:\projects\jciiot\JCIIOT2026\JCIIOT --knowledge-enabled true
+
+===== OUTPUT =====
+[robosuite WARNING] No private macro file found! (macros.py:57)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:58)
+[robosuite WARNING] To setup, run: python D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite/scripts/setup_macros.py (macros.py:59)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly (e.g. pip install mink==0.0.5), otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:41)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: low_dim with keys: ['robot0_right_eef_quat', 'robot0_right_eef_pos', 'robot0_left_eef_quat', 'robot0_left_gripper_qpos', 'robot0_right_gripper_qpos', 'robot0_left_eef_pos']
+using obs modality: rgb with keys: ['robot0_robotview_image']
+using obs modality: depth with keys: []
+using obs modality: scan with keys: []
+Created GPT_Backbone model with number of parameters: 396032
+Loaded robomimic checkpoint: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\model_epoch_150.pth
+Evaluation device: cpu
+[GEOM_GRASP] source=input_1 object=white_tote_b01_left_center left=[-14.8391, 4.7397, 1.489] right=[-14.5091, 4.7397, 1.489] center=[-14.6741, 4.9547, 1.489] target_z=1.5890
+transport_attachment_enabled: object=white_tote_b01_left_center, joint=white_tote_b01_left_center_joint0, relative_xy=[1.101, 0.0012], world_z=1.593562, held_gripper_joints=12
+turn_to_output_result: success=True, turn_steps=40, target_yaw=1.501245, final_yaw=1.501245, final_error=-0.000000, xy_drift=0.000000
+[GEOM_GRASP] source=input_1 object=white_tote_b01_left_front left=[-14.8391, 4.1999, 1.489] right=[-14.5091, 4.1999, 1.489] center=[-14.6741, 4.4149, 1.489] target_z=1.5890
+transport_attachment_enabled: object=white_tote_b01_left_front, joint=white_tote_b01_left_front_joint0, relative_xy=[1.1013, -0.0001], world_z=1.575842, held_gripper_joints=12
+turn_to_output_result: success=True, turn_steps=40, target_yaw=1.495058, final_yaw=1.495083, final_error=-0.000024, xy_drift=0.000000
+[GEOM_GRASP] source=input_1 object=white_tote_b01_left_back left=[-14.8391, 5.306, 1.489] right=[-14.5091, 5.306, 1.489] center=[-14.6741, 5.521, 1.489] target_z=1.5890
+transport_attachment_enabled: object=white_tote_b01_left_back, joint=white_tote_b01_left_back_joint0, relative_xy=[1.1014, -0.0026], world_z=1.590990, held_gripper_joints=12
+turn_to_output_result: success=True, turn_steps=40, target_yaw=1.494966, final_yaw=1.495147, final_error=-0.000182, xy_drift=0.000000
+
+===== PROCESS EXIT =====
+returncode: 0

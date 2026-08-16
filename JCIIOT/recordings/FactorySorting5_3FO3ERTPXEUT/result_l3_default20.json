@@ -1,0 +1,881 @@
+{
+  "timestamp": "l3_default20",
+  "task_index": 2,
+  "level": "L3",
+  "env_name": "FactorySorting5_3FO3ERTPXEUT",
+  "source": "aux_input_1",
+  "target": "output_5",
+  "objects": [
+    "blue_tote_b01_far_right"
+  ],
+  "status": "OK",
+  "success": true,
+  "elapsed_sec": 185.796,
+  "trajectory": "D:\\projects\\jciiot\\JCIIOT2026\\JCIIOT\\recordings\\FactorySorting5_3FO3ERTPXEUT\\trajectory_l3_default20_OK.json",
+  "steps": [
+    {
+      "skill": "move",
+      "description": "move to aux_input_1",
+      "success": true,
+      "message": "Moved to: aux_input_1",
+      "payload": {
+        "action": "move",
+        "target": "aux_input_1",
+        "resolved_station": "aux_input_1",
+        "goal_xy": [
+          1.32,
+          7.62
+        ],
+        "start_base_pose": {
+          "xy": [
+            13.5,
+            0.0
+          ],
+          "yaw": 3.1415927410125732,
+          "robot_base_pos": [
+            13.5,
+            0.0,
+            0.0
+          ],
+          "robot_base_ori": [
+            0.0,
+            0.0,
+            3.1415927410125732
+          ]
+        },
+        "final_base_pose": {
+          "xy": [
+            1.319999999999771,
+            7.62
+          ],
+          "yaw": -3.13836669921875,
+          "robot_base_pos": [
+            1.319999999999771,
+            7.62,
+            0.0
+          ],
+          "robot_base_ori": [
+            0.0,
+            0.0,
+            -3.13836669921875
+          ]
+        },
+        "waypoints": 53,
+        "pre_pick_approach_profile": {
+          "goal_xy": [
+            1.32,
+            7.62
+          ],
+          "final_xy": [
+            1.32,
+            7.62
+          ],
+          "waypoint_tolerance": 0.12,
+          "append_direct_goal": true
+        },
+        "post_pick_retreat": [],
+        "distance_to_goal": 2.291500322826323e-13,
+        "reached": true
+      },
+      "inputs": {
+        "target": "aux_input_1",
+        "object_name": "blue_tote_b01_far_right"
+      },
+      "preconditions": [],
+      "expected_output": "reached aux_input_1",
+      "timeout": 3000.0,
+      "retries": 0,
+      "attempts": 1
+    },
+    {
+      "skill": "pick_up",
+      "description": "pick blue_tote_b01_far_right",
+      "success": true,
+      "message": "Geometric site grasp OK: aux_input_1",
+      "payload": {
+        "action": "pick_up",
+        "target": "aux_input_1",
+        "object_name": "blue_tote_b01_far_right",
+        "grasp_initial_base_pose": {
+          "xy": [
+            1.319999999999771,
+            7.62
+          ],
+          "yaw": -3.13836669921875,
+          "robot_base_pos": [
+            1.319999999999771,
+            7.62,
+            0.0
+          ],
+          "robot_base_ori": [
+            0.0,
+            0.0,
+            -3.13836669921875
+          ]
+        },
+        "method": "geometric_site_first",
+        "ok": true,
+        "transport_shortcuts_cleared": {
+          "attached": true,
+          "object_name": "blue_tote_b01_far_right"
+        },
+        "fallback": {
+          "ok": true,
+          "object_name": "blue_tote_b01_far_right",
+          "source": "aux_input_1",
+          "joint_name": "blue_tote_b01_far_right_joint0",
+          "center_site": [
+            -0.21734813095382957,
+            8.539359211866348,
+            1.28895762549855
+          ],
+          "left_site": [
+            -0.36534813095382956,
+            8.665359211866347,
+            1.45395762549855
+          ],
+          "right_site": [
+            -0.6253481309538296,
+            8.665359211866347,
+            1.45395762549855
+          ],
+          "target_z": 1.5889781521965824,
+          "base_nudge": {
+            "enabled": false,
+            "reason": "L3 push-rim strategy uses explicit navigation stances"
+          },
+          "push_start_center": [
+            -0.215201,
+            8.473143,
+            1.2889781521965824
+          ],
+          "push_end_center": [
+            -0.2718342165752667,
+            8.623543564378988,
+            1.2889676044969252
+          ],
+          "push_delta": [
+            -0.05663321657526668,
+            0.1504005643789874,
+            -1.0547699657248444e-05
+          ],
+          "grasp_base_xy": [
+            -0.2718342165752667,
+            9.48
+          ],
+          "visual_grasp": {
+            "ok": true,
+            "method": "vertical_two_gripper_site_approach",
+            "grasp_status_after_close": {
+              "right": false,
+              "left": true
+            },
+            "grasp_status_after_lift": {
+              "right": true,
+              "left": false
+            },
+            "object_lift_delta": 0.08683689048362142,
+            "post_lift_hold_steps": 80,
+            "contact_grasp_ok": false,
+            "strict_grasp_ok": true,
+            "right_target": [
+              -0.34734813095382955,
+              8.799359211866348,
+              1.45395762549855
+            ],
+            "left_target": [
+              -0.08734813095382957,
+              8.799359211866348,
+              1.45395762549855
+            ],
+            "side_approach_vector": [
+              0.0,
+              0.28,
+              0.175
+            ],
+            "right_rot_delta": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "left_rot_delta": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pre_close_distances": {
+              "right": 0.023913056655017927,
+              "left": 0.00851234051046636
+            },
+            "close_distances": {
+              "right": 0.025785575751486847,
+              "left": 0.019463147658342263
+            },
+            "pre_close_positions": {
+              "right": [
+                -0.34472,
+                8.79803,
+                1.47769
+              ],
+              "left": [
+                -0.09031,
+                8.80732,
+                1.45454
+              ]
+            },
+            "close_positions": {
+              "right": [
+                -0.34023,
+                8.80857,
+                1.47696
+              ],
+              "left": [
+                -0.09426,
+                8.81725,
+                1.45725
+              ]
+            },
+            "squeeze_positions": {
+              "right": [
+                -0.32506,
+                8.77899,
+                1.4755
+              ],
+              "left": [
+                -0.09025,
+                8.78144,
+                1.45255
+              ]
+            },
+            "final_positions": {
+              "right": [
+                -0.33694,
+                8.76102,
+                1.62306
+              ],
+              "left": [
+                -0.08844,
+                8.75433,
+                1.62065
+              ]
+            },
+            "close_fingerpad_positions": {
+              "right_left_fingerpad": [
+                -0.32109,
+                8.8243,
+                1.47057
+              ],
+              "right_right_fingerpad": [
+                -0.35936,
+                8.79284,
+                1.48336
+              ],
+              "left_left_fingerpad": [
+                -0.12862,
+                8.84083,
+                1.47667
+              ],
+              "left_right_fingerpad": [
+                -0.05991,
+                8.79368,
+                1.43784
+              ]
+            },
+            "close_gripper_contact_geom_positions": {
+              "right_left_fingerpad": [
+                -0.32109,
+                8.8243,
+                1.47057
+              ],
+              "right_left_fingertip": [
+                -0.31971,
+                8.82787,
+                1.47011
+              ],
+              "right_right_fingerpad": [
+                -0.35936,
+                8.79284,
+                1.48336
+              ],
+              "right_right_fingertip": [
+                -0.35832,
+                8.78915,
+                1.48301
+              ],
+              "left_left_fingerpad": [
+                -0.12862,
+                8.84083,
+                1.47667
+              ],
+              "left_left_fingertip": [
+                -0.13041,
+                8.84322,
+                1.4791
+              ],
+              "left_right_fingerpad": [
+                -0.05991,
+                8.79368,
+                1.43784
+              ],
+              "left_right_fingertip": [
+                -0.05795,
+                8.79132,
+                1.4355
+              ]
+            },
+            "squeeze_gripper_contact_geom_positions": {
+              "right_left_fingerpad": [
+                -0.3074,
+                8.79334,
+                1.46918
+              ],
+              "right_left_fingertip": [
+                -0.30577,
+                8.79678,
+                1.46861
+              ],
+              "right_right_fingerpad": [
+                -0.34272,
+                8.76465,
+                1.48182
+              ],
+              "right_right_fingertip": [
+                -0.3417,
+                8.76095,
+                1.48142
+              ],
+              "left_left_fingerpad": [
+                -0.12371,
+                8.80326,
+                1.46984
+              ],
+              "left_left_fingertip": [
+                -0.12584,
+                8.80564,
+                1.47199
+              ],
+              "left_right_fingerpad": [
+                -0.0568,
+                8.75962,
+                1.43526
+              ],
+              "left_right_fingertip": [
+                -0.05469,
+                8.75723,
+                1.43309
+              ]
+            },
+            "final_fingerpad_positions": {
+              "right_left_fingerpad": [
+                -0.32167,
+                8.77648,
+                1.61884
+              ],
+              "right_right_fingerpad": [
+                -0.35221,
+                8.74556,
+                1.62727
+              ],
+              "left_left_fingerpad": [
+                -0.10368,
+                8.77015,
+                1.63046
+              ],
+              "left_right_fingerpad": [
+                -0.0732,
+                8.73851,
+                1.61083
+              ]
+            },
+            "final_gripper_contact_geom_positions": {
+              "right_left_fingerpad": [
+                -0.32167,
+                8.77648,
+                1.61884
+              ],
+              "right_left_fingertip": [
+                -0.31941,
+                8.77953,
+                1.61814
+              ],
+              "right_right_fingerpad": [
+                -0.35221,
+                8.74556,
+                1.62727
+              ],
+              "right_right_fingertip": [
+                -0.35198,
+                8.74173,
+                1.62765
+              ],
+              "left_left_fingerpad": [
+                -0.10368,
+                8.77015,
+                1.63046
+              ],
+              "left_left_fingertip": [
+                -0.10702,
+                8.77179,
+                1.63147
+              ],
+              "left_right_fingerpad": [
+                -0.0732,
+                8.73851,
+                1.61083
+              ],
+              "left_right_fingertip": [
+                -0.07133,
+                8.73565,
+                1.60905
+              ]
+            },
+            "close_object_contact_pairs": [
+              {
+                "geom1": "gripper0_right_left_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0011374432296402332,
+                "pos": [
+                  -0.28307,
+                  8.81821,
+                  1.4737
+                ]
+              },
+              {
+                "geom1": "gripper0_right_left_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0004044990995915699,
+                "pos": [
+                  -0.29252,
+                  8.81781,
+                  1.44524
+                ]
+              },
+              {
+                "geom1": "gripper0_right_left_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0013857858000130556,
+                "pos": [
+                  -0.28614,
+                  8.81784,
+                  1.47367
+                ]
+              },
+              {
+                "geom1": "gripper0_right_left_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0007017046119676365,
+                "pos": [
+                  -0.29497,
+                  8.81747,
+                  1.44711
+                ]
+              },
+              {
+                "geom1": "blue_tote_b01_far_right_tote_b01_col_right",
+                "geom2": "gripper0_right_right_inner_knuckle_collision",
+                "dist": -0.0043153472090883705,
+                "pos": [
+                  -0.42488,
+                  8.79395,
+                  1.48677
+                ]
+              },
+              {
+                "geom1": "gripper0_left_left_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.001752147354999617,
+                "pos": [
+                  -0.12361,
+                  8.83072,
+                  1.48875
+                ]
+              },
+              {
+                "geom1": "gripper0_left_left_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0008658794852298166,
+                "pos": [
+                  -0.16495,
+                  8.82784,
+                  1.47433
+                ]
+              },
+              {
+                "geom1": "gripper0_left_left_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0017725973582959945,
+                "pos": [
+                  -0.11925,
+                  8.83106,
+                  1.48875
+                ]
+              },
+              {
+                "geom1": "gripper0_left_left_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.000858709848887093,
+                "pos": [
+                  -0.16189,
+                  8.82809,
+                  1.47388
+                ]
+              },
+              {
+                "geom1": "gripper0_left_right_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_front",
+                "dist": -0.001428317448445794,
+                "pos": [
+                  -0.08781,
+                  8.77057,
+                  1.42566
+                ]
+              }
+            ],
+            "squeeze_object_contact_pairs": [
+              {
+                "geom1": "gripper0_right_left_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0012305079283428388,
+                "pos": [
+                  -0.2699,
+                  8.78444,
+                  1.4714
+                ]
+              },
+              {
+                "geom1": "gripper0_right_left_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0007343819322850346,
+                "pos": [
+                  -0.28016,
+                  8.78441,
+                  1.44321
+                ]
+              },
+              {
+                "geom1": "gripper0_right_left_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0014056779039868686,
+                "pos": [
+                  -0.273,
+                  8.78427,
+                  1.47146
+                ]
+              },
+              {
+                "geom1": "gripper0_right_left_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.000942626974332918,
+                "pos": [
+                  -0.28257,
+                  8.78424,
+                  1.44515
+                ]
+              },
+              {
+                "geom1": "blue_tote_b01_far_right_tote_b01_col_right",
+                "geom2": "gripper0_right_right_inner_knuckle_collision",
+                "dist": -0.003420576276155368,
+                "pos": [
+                  -0.40992,
+                  8.76782,
+                  1.48725
+                ]
+              },
+              {
+                "geom1": "gripper0_left_left_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.00218929594229897,
+                "pos": [
+                  -0.15831,
+                  8.78698,
+                  1.46737
+                ]
+              },
+              {
+                "geom1": "gripper0_left_left_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0017300963976191125,
+                "pos": [
+                  -0.15527,
+                  8.78729,
+                  1.467
+                ]
+              },
+              {
+                "geom1": "gripper0_left_right_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_front",
+                "dist": -0.0024440367441720635,
+                "pos": [
+                  -0.08258,
+                  8.73376,
+                  1.42508
+                ]
+              },
+              {
+                "geom1": "gripper0_left_right_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_front",
+                "dist": -0.001032739121567062,
+                "pos": [
+                  -0.08194,
+                  8.73619,
+                  1.42644
+                ]
+              }
+            ],
+            "final_object_contact_pairs": [
+              {
+                "geom1": "gripper0_right_left_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0012475879573248007,
+                "pos": [
+                  -0.29208,
+                  8.75987,
+                  1.6007
+                ]
+              },
+              {
+                "geom1": "gripper0_right_left_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0007612189768350111,
+                "pos": [
+                  -0.29483,
+                  8.76003,
+                  1.60207
+                ]
+              },
+              {
+                "geom1": "gripper0_right_right_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.00033753199439793695,
+                "pos": [
+                  -0.38755,
+                  8.74935,
+                  1.6212
+                ]
+              },
+              {
+                "geom1": "gripper0_right_right_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0006083306420641209,
+                "pos": [
+                  -0.31563,
+                  8.74091,
+                  1.63226
+                ]
+              },
+              {
+                "geom1": "gripper0_right_right_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0013720390892357087,
+                "pos": [
+                  -0.3862,
+                  8.74971,
+                  1.62133
+                ]
+              },
+              {
+                "geom1": "gripper0_right_right_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.001627363528463825,
+                "pos": [
+                  -0.31839,
+                  8.74175,
+                  1.63175
+                ]
+              },
+              {
+                "geom1": "gripper0_right_right_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.00023409861508991473,
+                "pos": [
+                  -0.38663,
+                  8.74994,
+                  1.6182
+                ]
+              },
+              {
+                "geom1": "blue_tote_b01_far_right_tote_b01_col_right",
+                "geom2": "gripper0_right_right_inner_knuckle_collision",
+                "dist": -0.0006699872003111696,
+                "pos": [
+                  -0.42752,
+                  8.76773,
+                  1.61776
+                ]
+              },
+              {
+                "geom1": "gripper0_left_left_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_right",
+                "dist": -0.0007122168057831497,
+                "pos": [
+                  -0.12729,
+                  8.73979,
+                  1.62903
+                ]
+              },
+              {
+                "geom1": "gripper0_left_right_fingertip_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_front",
+                "dist": -0.0020639364829159916,
+                "pos": [
+                  -0.09942,
+                  8.72673,
+                  1.58598
+                ]
+              },
+              {
+                "geom1": "gripper0_left_right_fingerpad_collision",
+                "geom2": "blue_tote_b01_far_right_tote_b01_col_front",
+                "dist": -0.0005139439906716961,
+                "pos": [
+                  -0.09875,
+                  8.72847,
+                  1.58807
+                ]
+              }
+            ],
+            "close_fingerpad_contacts": {
+              "right": {
+                "left_fingerpad": true,
+                "right_fingerpad": false
+              },
+              "left": {
+                "left_fingerpad": true,
+                "right_fingerpad": true
+              }
+            },
+            "final_fingerpad_contacts": {
+              "right": {
+                "left_fingerpad": true,
+                "right_fingerpad": true
+              },
+              "left": {
+                "left_fingerpad": false,
+                "right_fingerpad": true
+              }
+            }
+          }
+        }
+      },
+      "inputs": {
+        "target": "aux_input_1",
+        "object_name": "blue_tote_b01_far_right",
+        "grasp_initial_base_pose": {
+          "xy": [
+            1.319999999999771,
+            7.62
+          ],
+          "yaw": -3.13836669921875,
+          "robot_base_pos": [
+            1.319999999999771,
+            7.62,
+            0.0
+          ],
+          "robot_base_ori": [
+            0.0,
+            0.0,
+            -3.13836669921875
+          ]
+        }
+      },
+      "preconditions": [],
+      "expected_output": "picked",
+      "timeout": 3000.0,
+      "retries": 0,
+      "attempts": 1
+    },
+    {
+      "skill": "move",
+      "description": "move to output_5",
+      "success": true,
+      "message": "Moved to: output_5",
+      "payload": {
+        "action": "move",
+        "target": "output_5",
+        "resolved_station": "output_5",
+        "goal_xy": [
+          4.02,
+          -7.261
+        ],
+        "start_base_pose": {
+          "xy": [
+            -0.28076112299719624,
+            9.230319046232156
+          ],
+          "yaw": -1.5699551105499268,
+          "robot_base_pos": [
+            -0.28076112299719624,
+            9.230319046232156,
+            0.0
+          ],
+          "robot_base_ori": [
+            0.0,
+            0.0,
+            -1.5699551105499268
+          ]
+        },
+        "final_base_pose": {
+          "xy": [
+            3.972452802942524,
+            -7.181544598848109
+          ],
+          "yaw": -1.5697516202926636,
+          "robot_base_pos": [
+            3.972452802942524,
+            -7.181544598848109,
+            0.0
+          ],
+          "robot_base_ori": [
+            0.0,
+            0.0,
+            -1.5697516202926636
+          ]
+        },
+        "waypoints": 61,
+        "pre_pick_approach_profile": {},
+        "post_pick_retreat": [
+          [
+            -0.2854684670516336,
+            9.550284420783766
+          ],
+          [
+            -0.2903229156077721,
+            9.880248713290117
+          ]
+        ],
+        "distance_to_goal": 0.09259533854482313,
+        "reached": true
+      },
+      "inputs": {
+        "target": "output_5"
+      },
+      "preconditions": [],
+      "expected_output": "reached output_5",
+      "timeout": 3000.0,
+      "retries": 0,
+      "attempts": 1
+    },
+    {
+      "skill": "place_down",
+      "description": "place blue_tote_b01_far_right",
+      "success": true,
+      "message": "Physics place OK: output_5",
+      "payload": {
+        "action": "place_down",
+        "target": "output_5",
+        "method": "physics",
+        "ok": true,
+        "fallback": null
+      },
+      "inputs": {
+        "target": "output_5"
+      },
+      "preconditions": [],
+      "expected_output": "placed",
+      "timeout": 3000.0,
+      "retries": 0,
+      "attempts": 1
+    }
+  ]
+}
