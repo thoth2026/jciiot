@@ -125,11 +125,25 @@ Two repairs tried, both still zero contacts:
    against the tote it goes on shoving it. The tote travelled 8.505 -> 8.424
    during the hold.
 
-**Next thing to try** (not attempted): the tote may not be drifting on its own at
-all — it may be getting knocked back by the arms during the approach. Tuck the
-arms for the whole approach, confirm the tote stays at ~8.63, and only then pick
-the site offsets. If it does stay put, the offsets need re-deriving once, against
-a tote that is not moving, and L3 goes to 20/20.
+**The tote is not drifting at all — the robot is shoving it.** Confirmed by
+correlating tote motion against base pose frame by frame:
+
+| frame | tote y | base (x, y) | |
+|---|---|---|---|
+| 895 | **8.622** | (0.042, 7.723) | push done, base parked |
+| 1148 | 8.591 | (-0.280, **9.335**) | base starts its final descent |
+| 1151 | **8.524** | (-0.281, **9.230**) | 67 mm in 4 frames, exactly in step with the descent |
+| 1410-1469 | 8.503 -> **8.421** | (-0.281, 9.230) stationary | base still, tote still moving — the settle hold has an arm resting on it |
+
+So both losses are self-inflicted: the arms clip the tote on the way in, and the
+settle loop then keeps leaning on it.
+
+**Next step, and it should be enough:** keep the arms tucked through the *whole*
+final descent, not just the push-stance flip (`_tuck_arms_over_base` already does
+the tucking; it just is not applied on that leg), and drop the settle hold. The
+tote should then stay at ~8.622. Re-derive the site offsets once against that
+stationary pose. Collisions are already zero on this route, so that is the last
+thing between L3 and 20/20.
 
 ### L3: the -5 taken apart properly — what each contact is, and what fixes it
 
