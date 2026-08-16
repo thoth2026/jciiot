@@ -1,0 +1,19 @@
+# --- large files kept on disk but out of the repo -------------------------
+# These are the organiser's originals. They stay in the working tree (app.py
+# and robosuite_backend.py resolve model_epoch_150.pth at runtime), they are
+# just not worth carrying in git.
+JCIIOT/robosuite/dataset/*.hdf5
+JCIIOT/robosuite/robosuite/*.pth
+competition description/USD/**/*.zip
+
+# --- python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- local scratch ---------------------------------------------------------
+.git_competition_backup/
+MUJOCO_LOG.TXT
+*.log.bak

@@ -1,0 +1,14 @@
+{
+  "updated_at": "2026-08-16T21:24:05",
+  "document_count": 1,
+  "documents": {
+    "my_strategy.md": {
+      "title": "<!-- TEAM KNOWLEDGE — Customize your strategy here -->",
+      "category": "reference",
+      "tags": [
+        "reference"
+      ],
+      "added_at": "2026-06-24T16:32:06"
+    }
+  }
+}
