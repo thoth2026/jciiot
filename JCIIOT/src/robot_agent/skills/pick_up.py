@@ -1088,6 +1088,13 @@ def _l3_push_then_l5like_grasp(
             [float(turn_x), row],
         ], steps=900, tol=0.04)
         _set_yaw(target_yaw)
+        # Tuck for the run back in as well, not just for the flip. The final
+        # descent is what knocks the tote out of position: tracked frame by
+        # frame, it moved 67 mm in 4 frames exactly in step with the base
+        # dropping from y 9.335 to 9.230. Hands parked over the base at z = 1.30
+        # cannot reach it.
+        if tuck_arms:
+            _tuck_arms_over_base()
         cur_xy, _ = backend.get_base_pose()
         # Rejoin the high row before heading left: the flip drifts the base along
         # its own heading, and a diagonal from wherever it lands cuts the table's
@@ -1282,7 +1289,7 @@ def _l3_push_then_l5like_grasp(
     #   back  - straight back in +Y to `grasp_turn_row`, flip, then come down
     # Both alternatives remove the 12 flip contacts and both cost the grasp,
     # which is worth 15 of this level's 20 points — see `_turn_past_table`.
-    grasp_turn_mode = os.getenv("JCIIOT_L3_GRASP_TURN_MODE", "off").strip().lower()
+    grasp_turn_mode = os.getenv("JCIIOT_L3_GRASP_TURN_MODE", "back").strip().lower()
     grasp_turn_x = _l3_stance_param("JCIIOT_L3_GRASP_TURN_X", 1.60)
     # Where the old in-place flip settled, relative to the commanded stance:
     # measured on the verified 15/20 run (stance (-0.285, 9.480) → base
@@ -1292,13 +1299,13 @@ def _l3_push_then_l5like_grasp(
     grasp_turn_dy = _l3_stance_param("JCIIOT_L3_GRASP_TURN_DY", -0.258)
     # The row the flip and the return leg run along: 0.33 m above the grasp
     # pose, which lifts the push-posture grippers clear of the tote.
-    grasp_turn_row = _l3_stance_param("JCIIOT_L3_GRASP_TURN_ROW", 9.55)
+    grasp_turn_row = _l3_stance_param("JCIIOT_L3_GRASP_TURN_ROW", 10.0)
     # Back this far off the table before the push-stance flip (the one worth 62
     # of the 74 contacts), then drive to the pose that flip settles at. 0 = off.
-    push_turn_backoff = _l3_stance_param("JCIIOT_L3_PUSH_TURN_BACKOFF", 0.0)
+    push_turn_backoff = _l3_stance_param("JCIIOT_L3_PUSH_TURN_BACKOFF", 0.55)
     # Pull the hands in over the base before that flip — 49 of the 74 contacts
     # are the left gripper sweeping the table there.
-    tuck_arms = os.getenv("JCIIOT_L3_TUCK_ARMS", "0").lower() not in {"0", "false", "no", "off"}
+    tuck_arms = os.getenv("JCIIOT_L3_TUCK_ARMS", "1").lower() not in {"0", "false", "no", "off"}
     push_turn_end_x = _l3_stance_param("JCIIOT_L3_PUSH_TURN_END_X", 0.0424)
     push_turn_end_y = _l3_stance_param("JCIIOT_L3_PUSH_TURN_END_Y", 7.7231)
 
@@ -1416,24 +1423,14 @@ def _l3_push_then_l5like_grasp(
         # pose instead, using the offsets the *successful* grasp actually ended
         # up with: tote at (-0.007, 8.755), hands driven at (-0.415, 8.881) and
         # (-0.155, 8.881).
-        # Sample it *settled*. The tote is still creeping when the base arrives:
-        # sampling straight away read 8.649 while it came to rest at 8.40, which
-        # left the hands 0.30 m behind it. Hold until it stops moving.
-        #
-        # Note this waits on the object, it does not touch it — pinning the
-        # tote's qpos would be the object teleport the rules forbid.
-        settle_eps = _l3_stance_param("JCIIOT_L3_LIVE_SETTLE_EPS", 0.002)
-        settle_max = int(_l3_stance_param("JCIIOT_L3_LIVE_SETTLE_STEPS", 240))
-        hold = {arm: gripper_end_center_pos(env, robot, arm).copy() for arm in ARMS}
+        # Sample once, with the arms tucked. The earlier "wait until it settles"
+        # loop made this worse, not better: holding the hands where they are
+        # leaves one of them resting on the tote, which goes on shoving it —
+        # 8.503 -> 8.421 with the base completely stationary. With the arms over
+        # the base nothing is touching it, so one read is the right read.
         live = _current_center()
-        for _ in range(settle_max):
-            _step_targets(hold, -1.0, 1)
-            now = _current_center()
-            moved = float(np.linalg.norm(now - live))
-            live = now
-            if moved < settle_eps:
-                break
-        logger.info("L3 tote settled at %s", live.round(4).tolist())
+        logger.info("L3 tote read at %s (push end was %s)",
+                    live.round(4).tolist(), after_push_center.round(4).tolist())
         sites = {
             "center": live.copy(),
             "right": live + np.array([
