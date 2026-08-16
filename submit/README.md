@@ -1,4 +1,6 @@
 # JCIIOT 2026 工业分拣任务 技术报告
+GITHUB代码库:04ab8c3 → https://github.com/thoth2026/jciiot
+
 
 **成绩：100 / 100**（L1 10/10、L2 15/15、L3 20/20、L4 25/25、L5 30/30，五关全部零碰撞）
 
@@ -183,31 +185,3 @@ L5 需要往返三趟分别搬运三个料箱，上表为三个料箱的合计�
    判定阈值内，但余量不大。放置点目前是机器人停靠位，没有为多次放置做散开处理。
 
 ---
-
-## 四、复现方式
-
-```bash
-cd JCIIOT
-streamlit run app.py
-```
-
-全部改进均为默认配置，无需设置任何环境变量。
-
-不经过 LLM 规划器、直接运行单关（用于验证）：
-
-```bash
-python src/robot_agent/workflows/fixed_task_sequence.py --task-index 2
-```
-
-`--task-index` 取值 0–4 分别对应 L1–L5。
-
-调试过程中的完整实验记录（含所有失败尝试及其原因）见 `JCIIOT/TUNING_LOG.md`。
-
----
-
-## 参考文献
-
-1. M. Dogar and S. Srinivasa. *A Framework for Push-Grasping in Clutter.* Robotics: Science and Systems (RSS), 2011.
-2. A. Zeng, S. Song, S. Welker, J. Lee, A. Rodriguez, T. Funkhouser. *Learning Synergies between Pushing and Grasping with Self-supervised Deep Reinforcement Learning.* IROS, 2018.
-3. Y. Zhu et al. *robosuite: A Modular Simulation Framework and Benchmark for Robot Learning.* 2020.
-4. A. Mandlekar et al. *robomimic: What Matters in Learning from Offline Human Demonstrations for Robot Manipulation.* CoRL, 2021.
