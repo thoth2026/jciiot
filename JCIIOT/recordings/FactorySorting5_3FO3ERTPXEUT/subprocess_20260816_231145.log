@@ -1,0 +1,30 @@
+command: C:\Users\thoth\anaconda3\envs\jciiot2026\python.exe D:\projects\jciiot\JCIIOT2026\JCIIOT\src\robot_agent\task_subprocess_runner.py --task "Please follow the SOP. The object is a blue material transfer bin. The Pick Station is Pick Station 1, and the Place Station is Place Station 2." --task-index 2 --timestamp 20260816_231145 --result-json D:\projects\jciiot\JCIIOT2026\JCIIOT\recordings\FactorySorting5_3FO3ERTPXEUT\result_20260816_231145.json --app-dir D:\projects\jciiot\JCIIOT2026\JCIIOT --knowledge-enabled true
+
+===== OUTPUT =====
+[robosuite WARNING] No private macro file found! (macros.py:57)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:58)
+[robosuite WARNING] To setup, run: python D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite/scripts/setup_macros.py (macros.py:59)
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly (e.g. pip install mink==0.0.5), otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:41)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+inflated A* planning failed, retrying raw grid: No passable cell found near (378, 429); check approach points and safety margin.
+inflated A* planning failed, retrying raw grid: No passable cell found near (378, 442); check approach points and safety margin.
+inflated A* planning failed, retrying raw grid: No passable cell found near (378, 435); check approach points and safety margin.
+inflated A* planning failed, retrying raw grid: No passable cell found near (378, 429); check approach points and safety margin.
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: low_dim with keys: ['robot0_left_gripper_qpos', 'robot0_left_eef_pos', 'robot0_right_gripper_qpos', 'robot0_right_eef_pos', 'robot0_right_eef_quat', 'robot0_left_eef_quat']
+using obs modality: rgb with keys: ['robot0_robotview_image']
+using obs modality: depth with keys: []
+using obs modality: scan with keys: []
+Created GPT_Backbone model with number of parameters: 396032
+Loaded robomimic checkpoint: D:\projects\jciiot\JCIIOT2026\JCIIOT\robosuite\robosuite\model_epoch_150.pth
+Evaluation device: cpu
+transport_attachment_enabled: object=blue_tote_b01_far_right, joint=blue_tote_b01_far_right_joint0, relative_xy=[0.7257, -0.0161], world_z=1.375815, held_gripper_joints=12
+turn_to_output_result: success=True, turn_steps=40, target_yaw=-0.088100, final_yaw=-0.087902, final_error=-0.000198, xy_drift=0.000000
+
+===== PROCESS EXIT =====
+returncode: 0
