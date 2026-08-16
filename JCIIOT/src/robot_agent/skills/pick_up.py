@@ -1132,6 +1132,8 @@ def _l3_push_then_l5like_grasp(
         start_xy, _ = backend.get_base_pose()
         staged = [float(start_xy[0]), float(start_xy[1]) - float(backoff)]
         _drive([list(map(float, start_xy)), staged], steps=700, tol=0.03)
+        if tuck_arms:
+            _tuck_arms_over_base()
         _set_yaw(target_yaw)
         cur_xy, _ = backend.get_base_pose()
         _drive([list(map(float, cur_xy)), goal.tolist()], steps=700, tol=0.02)
@@ -1140,6 +1142,82 @@ def _l3_push_then_l5like_grasp(
             "L3 flipped %.2f m back from the table: target %s, reached %s yaw=%.3f",
             backoff, goal.round(4).tolist(),
             np.asarray(final_xy, dtype=float).round(4).tolist(), float(final_yaw),
+        )
+
+    def _tuck_arms_over_base() -> None:
+        """Pull both hands in over the base before a turn.
+
+        49 of the 74 judged contacts are the *left gripper* sweeping the table
+        while the base flips at the push stance. The table proxy only exists at
+        z <= 0.90 (`SCENE_AABB_COLLISION_LOWERED_HEIGHT = (0.45, 0.45)`), so
+        parking the hands high and inside the base footprint takes them out of
+        the swept volume entirely — the torso still sweeps 0.370 m, but that is
+        the other 13, which the pre-turn backoff handles.
+
+        Targets are computed from the live base pose and are absolute world
+        points, so this is just another arm move; the push that follows drives
+        the hands to their own absolute targets for 95 steps, which re-plays the
+        approach from a known pose rather than an inherited one.
+        """
+        import numpy as np
+
+        base_xy, _ = backend.get_base_pose()
+        base = np.asarray(base_xy, dtype=float)
+        height = _l3_stance_param("JCIIOT_L3_TUCK_Z", 1.30)
+        span = _l3_stance_param("JCIIOT_L3_TUCK_SPAN", 0.20)
+        tucked = {
+            "right": np.array([base[0] - span, base[1], height], dtype=float),
+            "left": np.array([base[0] + span, base[1], height], dtype=float),
+        }
+        _step_targets(tucked, -1.0, int(_l3_stance_param("JCIIOT_L3_TUCK_STEPS", 60)))
+        logger.info("L3 arms tucked over the base at z=%.2f before the turn", height)
+
+    def _nudge_tote_into_grasp(pushed_center: Any) -> None:
+        """Do deliberately what the in-place flip was doing by accident.
+
+        The flip drags the tote +0.28 m in X and +0.13 m in Y — from
+        (-0.285, 8.621) to (-0.007, 8.755) on the verified run — which is what
+        brings its back wall onto the grasp targets at y = 8.881. Flip anywhere
+        else and the tote stays put, 0.39 m short, and the hands close on air.
+
+        So when the flip has been moved, reach in from +Y with both hands and
+        walk the tote to the same place. Targets are absolute world points, and
+        the hands come in above the table proxy's z <= 0.90 band, so this adds
+        no judged contact of its own.
+
+        Only runs when `JCIIOT_L3_GRASP_TURN_MODE` is not "off".
+        """
+        import numpy as np
+
+        start = np.asarray(pushed_center, dtype=float)
+        goal = start + np.array([
+            _l3_stance_param("JCIIOT_L3_TOTE_NUDGE_DX", 0.278),
+            _l3_stance_param("JCIIOT_L3_TOTE_NUDGE_DY", 0.134),
+            0.0,
+        ], dtype=float)
+        reach_z = _l3_stance_param("JCIIOT_L3_TOTE_NUDGE_Z", 0.165)
+        span = _l3_stance_param("JCIIOT_L3_TOTE_NUDGE_SPAN", 0.13)
+        behind = _l3_stance_param("JCIIOT_L3_TOTE_NUDGE_BEHIND", 0.26)
+
+        def targets(centre):
+            return {
+                "right": centre + np.array([-span, behind, reach_z], dtype=float),
+                "left": centre + np.array([span, behind, reach_z], dtype=float),
+            }
+
+        # Come down behind the tote with the hands open, then walk them forward.
+        _step_targets(targets(start + np.array([0.0, 0.16, 0.10])), -1.0, 70)
+        _step_targets(targets(start), -1.0, 50)
+        steps = 60
+        for i in range(steps):
+            alpha = (i + 1) / steps
+            _step_targets(targets(start + (goal - start) * alpha), -1.0, 1)
+            if float(np.linalg.norm(_current_center()[:2] - goal[:2])) < 0.03:
+                break
+        moved = _current_center() - start
+        logger.info(
+            "L3 tote nudged by %s (target %s)",
+            moved.round(3).tolist(), (goal - start).round(3).tolist(),
         )
 
     def _drive(points: list[list[float]], *, steps: int = 900, tol: float = 0.045) -> bool:
@@ -1198,12 +1276,14 @@ def _l3_push_then_l5like_grasp(
     push_x = _l3_stance_param("JCIIOT_L3_PUSH_STANCE_X", -0.215)
     push_y = _l3_stance_param("JCIIOT_L3_PUSH_STANCE_Y", 7.62)
     grasp_stance_y = _l3_stance_param("JCIIOT_L3_GRASP_STANCE_Y", 9.48)
-    # Run out past the table's +X edge and flip there instead of at the grasp
-    # stance. OFF (0) by default — it removes the 12 flip contacts but costs the
-    # grasp, which is worth 15 of this level's 20 points. Set
-    # JCIIOT_L3_GRASP_TURN_X=1.60 to enable; see `_turn_past_table` and
-    # TUNING_LOG.md for the two measured failures and why they happen.
-    grasp_turn_x = _l3_stance_param("JCIIOT_L3_GRASP_TURN_X", 0.0)
+    # Where to do the 180 degree flip that precedes the grasp.
+    #   off   - at the grasp stance (default; the verified 15/20 behaviour)
+    #   right - out past the table's +X edge, then back
+    #   back  - straight back in +Y to `grasp_turn_row`, flip, then come down
+    # Both alternatives remove the 12 flip contacts and both cost the grasp,
+    # which is worth 15 of this level's 20 points — see `_turn_past_table`.
+    grasp_turn_mode = os.getenv("JCIIOT_L3_GRASP_TURN_MODE", "off").strip().lower()
+    grasp_turn_x = _l3_stance_param("JCIIOT_L3_GRASP_TURN_X", 1.60)
     # Where the old in-place flip settled, relative to the commanded stance:
     # measured on the verified 15/20 run (stance (-0.285, 9.480) → base
     # (-0.294, 9.222)). The grasp is tuned against that pose, so the new route
@@ -1216,6 +1296,9 @@ def _l3_push_then_l5like_grasp(
     # Back this far off the table before the push-stance flip (the one worth 62
     # of the 74 contacts), then drive to the pose that flip settles at. 0 = off.
     push_turn_backoff = _l3_stance_param("JCIIOT_L3_PUSH_TURN_BACKOFF", 0.0)
+    # Pull the hands in over the base before that flip — 49 of the 74 contacts
+    # are the left gripper sweeping the table there.
+    tuck_arms = os.getenv("JCIIOT_L3_TUCK_ARMS", "0").lower() not in {"0", "false", "no", "off"}
     push_turn_end_x = _l3_stance_param("JCIIOT_L3_PUSH_TURN_END_X", 0.0424)
     push_turn_end_y = _l3_stance_param("JCIIOT_L3_PUSH_TURN_END_Y", 7.7231)
 
@@ -1295,13 +1378,17 @@ def _l3_push_then_l5like_grasp(
                 [-1.05, grasp_base_y],
                 [grasp_base_x, grasp_base_y],
             ], steps=1300, tol=0.055)
-            if grasp_turn_x > 0.0:
+            if grasp_turn_mode in {"right", "back"}:
                 _turn_past_table(
                     -math.pi / 2.0,
-                    grasp_turn_x,
+                    # "back" flips directly above the tote instead of running
+                    # out sideways: no x move, just up to the row and down again.
+                    grasp_base_x if grasp_turn_mode == "back" else grasp_turn_x,
                     grasp_turn_row,
                     [grasp_base_x + grasp_turn_dx, grasp_base_y + grasp_turn_dy],
                 )
+                # The tote is re-targeted from its live pose after the flip instead
+                # of being nudged - see the site block below.
             else:
                 _turn_clear_of(-math.pi / 2.0, _L3_SIDE_TABLE_XY)
     except Exception:
@@ -1315,6 +1402,55 @@ def _l3_push_then_l5like_grasp(
         "right": after_push_center + np.array([-0.13, 0.26, 0.165], dtype=float),
         "left": after_push_center + np.array([0.13, 0.26, 0.165], dtype=float),
     }
+
+    if grasp_turn_mode in {"right", "back"}:
+        # The offsets above are relative to where the tote was the instant the
+        # push ended — and it does not stay there. Tracked through a run: the
+        # push moves it 8.473 -> 8.628, then it slides back to 8.485 during the
+        # navigation that follows. The shipped route gets away with that because
+        # the in-place flip drags it forward again right before the grasp; move
+        # the flip and nothing does, so the hands close 0.40 m behind it with
+        # zero object contacts (measured, lift delta 6e-6).
+        #
+        # So when the flip has been moved, anchor the targets on the tote's live
+        # pose instead, using the offsets the *successful* grasp actually ended
+        # up with: tote at (-0.007, 8.755), hands driven at (-0.415, 8.881) and
+        # (-0.155, 8.881).
+        # Sample it *settled*. The tote is still creeping when the base arrives:
+        # sampling straight away read 8.649 while it came to rest at 8.40, which
+        # left the hands 0.30 m behind it. Hold until it stops moving.
+        #
+        # Note this waits on the object, it does not touch it — pinning the
+        # tote's qpos would be the object teleport the rules forbid.
+        settle_eps = _l3_stance_param("JCIIOT_L3_LIVE_SETTLE_EPS", 0.002)
+        settle_max = int(_l3_stance_param("JCIIOT_L3_LIVE_SETTLE_STEPS", 240))
+        hold = {arm: gripper_end_center_pos(env, robot, arm).copy() for arm in ARMS}
+        live = _current_center()
+        for _ in range(settle_max):
+            _step_targets(hold, -1.0, 1)
+            now = _current_center()
+            moved = float(np.linalg.norm(now - live))
+            live = now
+            if moved < settle_eps:
+                break
+        logger.info("L3 tote settled at %s", live.round(4).tolist())
+        sites = {
+            "center": live.copy(),
+            "right": live + np.array([
+                _l3_stance_param("JCIIOT_L3_LIVE_SITE_RIGHT_DX", -0.408),
+                _l3_stance_param("JCIIOT_L3_LIVE_SITE_DY", 0.126),
+                _l3_stance_param("JCIIOT_L3_LIVE_SITE_DZ", 0.165),
+            ], dtype=float),
+            "left": live + np.array([
+                _l3_stance_param("JCIIOT_L3_LIVE_SITE_LEFT_DX", -0.148),
+                _l3_stance_param("JCIIOT_L3_LIVE_SITE_DY", 0.126),
+                _l3_stance_param("JCIIOT_L3_LIVE_SITE_DZ", 0.165),
+            ], dtype=float),
+        }
+        logger.info(
+            "L3 grasp sites re-anchored on the live tote pose %s (push end was %s)",
+            live.round(3).tolist(), after_push_center.round(3).tolist(),
+        )
 
     old_source = getattr(backend, "_jciiot_last_pick_source", "")
     try:

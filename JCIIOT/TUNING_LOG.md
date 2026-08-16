@@ -85,6 +85,52 @@ Making the requested route work needs the pick re-derived from the tote's *live*
 pose instead of from `after_push_center` — that is a rewrite of the L3 grasp, not
 a routing change.
 
+### L3: zero collisions IS reachable — the grasp is what is left
+
+**74 judged contacts -> 0, measured, three times.** Three knobs together, all
+default-off:
+
+| knob | removes |
+|---|---|
+| `JCIIOT_L3_PUSH_TURN_BACKOFF=0.55` | push-stance torso, 13 |
+| `JCIIOT_L3_TUCK_ARMS=1` | push-stance left gripper, 49 |
+| `JCIIOT_L3_GRASP_TURN_MODE=back` (+ `GRASP_TURN_ROW=10.0`) | pre-grasp torso, 12 |
+
+`TUCK_ARMS` works because the table proxy only exists at z <= 0.90; parking both
+hands over the base at z = 1.30 takes them out of the swept volume entirely.
+`GRASP_TURN_MODE=back` runs straight up to y = 10 (1.1 m of clearance against a
+0.370 m torso sweep), flips there, and comes back down perpendicular.
+
+**The grasp is the blocker, and the cause is not what the earlier entries say.**
+Tracking the tote through a run:
+
+| frame | tote y | |
+|---|---|---|
+| 0 | 8.473 | start |
+| 897 | **8.628** | push finished — the push itself works fine |
+| 1152 | 8.515 | drifting back |
+| end | 8.477 | back where it started |
+
+The tote does not stay pushed. The shipped route gets away with it because the
+in-place flip happens immediately after and re-positions it; move the flip and
+the navigation in between gives it time to come back, so the hands close 0.30 -
+0.40 m behind it with **zero object contacts** (lift delta ~3e-6).
+
+Two repairs tried, both still zero contacts:
+
+1. re-anchor the sites on the tote's live pose — sampled 8.649 while it came to
+   rest at 8.40, i.e. sampled mid-drift;
+2. wait for it to settle first — *worse*, and the user spotted why from the
+   replay: the hold loop keeps the arms where they are, and if an arm is resting
+   against the tote it goes on shoving it. The tote travelled 8.505 -> 8.424
+   during the hold.
+
+**Next thing to try** (not attempted): the tote may not be drifting on its own at
+all — it may be getting knocked back by the arms during the approach. Tuck the
+arms for the whole approach, confirm the tote stays at ~8.63, and only then pick
+the site offsets. If it does stay put, the offsets need re-deriving once, against
+a tote that is not moving, and L3 goes to 20/20.
+
 ### L3: the -5 taken apart properly — what each contact is, and what fixes it
 
 The 74 contacts are **three separate things**, not one. Split by phase and geom:

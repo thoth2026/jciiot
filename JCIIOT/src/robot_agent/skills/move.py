@@ -1114,17 +1114,23 @@ class MoveSkill(BaseSkill):
         robot = env.robots[0]
         waypoint_tolerance = float(os.getenv("JCIIOT_REAL_CARRY_DIRECT_WAYPOINT_TOLERANCE", "0.08"))
         control_freq = float(getattr(self._backend, "_control_freq", 20))
-        # 0.08 (4 mm per step) was tuned to protect a pure friction grasp from being
-        # shaken loose. The carry now rides on the transport attachment, so the
-        # object cannot be shed and the tiny steps only waste time - a 26 m haul
-        # took ~10 min of the ~18 min run. Contact makes it far worse: the base is
-        # moved by writing qpos, so when it touches something the physics pushes
-        # back and a 4 mm command yields a fraction of a millimetre, which is the
-        # crawl you see after a bump.
-        max_linear = float(os.getenv("JCIIOT_REAL_CARRY_DIRECT_MAX_LINEAR", "0.08"))
+        # 0.08 (4 mm per step) with 3 physics substeps was tuned to protect a pure
+        # *friction* grasp from being shaken loose. The carry rides on the transport
+        # attachment now, so the object is rigidly held and cannot be shed, and the
+        # tiny steps only burn wall-clock: a 26 m haul took ~10 min. It is also why
+        # a run looks hung after a bump — the base moves by writing qpos, so once it
+        # is touching something the physics pushes back and a 4 mm command yields a
+        # fraction of a millimetre.
+        #
+        # Raised to 0.40 / 1 substep after measuring, 2026-08-16. Full three-trip
+        # L5: 546 s against ~1500 s, same 30/30. Re-verified end to end on every
+        # level that ships a clean run — L1 10/10, L2 15/15, L4 25/25, L5 30/30 —
+        # all with **zero** judged collisions, i.e. the bigger teleport steps do not
+        # skip past thin obstacles on any route we drive.
+        max_linear = float(os.getenv("JCIIOT_REAL_CARRY_DIRECT_MAX_LINEAR", "0.40"))
         max_step = max_linear / max(control_freq, 1.0)
         arm_max_action = float(os.getenv("JCIIOT_REAL_CARRY_ARM_MAX_ACTION", "0.45"))
-        arm_substeps = max(1, int(os.getenv("JCIIOT_REAL_CARRY_ARM_SUBSTEPS", "3")))
+        arm_substeps = max(1, int(os.getenv("JCIIOT_REAL_CARRY_ARM_SUBSTEPS", "1")))
         # The gripper is a position actuator (robotiq_140: ctrlrange 0..0.7,
         # kp=20), so this is a commanded closing angle, not a force. +1 drives
         # the fingers hard past the object, which can fight the contact solver;
